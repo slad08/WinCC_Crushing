@@ -1,0 +1,225 @@
+#include "dynamic.h"
+#include "language.h"
+
+#include "dmdefs.h"
+#include "db.h"
+
+#pragma code("MasterGraphics.dll")
+	#include "MasterGraphics.h"
+#pragma code()
+
+#pragma code("pdlcsapi.dll")
+#include "pdlcsapi.h"
+#pragma code()
+
+#pragma option(mbcs)
+
+#ifndef LB_ADDSTRING
+#define LB_ADDSTRING    0x0180
+#endif
+
+#ifndef LB_SETCURSEL
+#define LB_SETCURSEL    0x0186
+#endif
+
+#include  	"dmclient.h"
+
+
+
+char *pszGenerateInfo1 = TEXT_GE_01
+				TEXT_GE_02
+				TEXT_GE_03
+				"%s \r\n"
+				TEXT_GE_05
+				TEXT_GE_06;
+
+char *pszGenerateInfo2 = TEXT_GE_07
+				TEXT_GE_08
+				TEXT_GE_09
+			    "%s \r\n"
+				TEXT_GE_05
+				TEXT_GE_06;
+
+char		szExportfile[255]="";
+char		szControlFile[255]="";
+BOOL		bExportOnlyOne=TRUE;
+BOOL		bSplitContainer = FALSE;
+BOOL		bExportAll=0;
+CMN_ERROR 	CMNError;
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+BEGIN_PROPERTY_SCHEME
+END_PROPERTY_SCHEME
+
+DECLARE_WIZARD_FOR_OCX
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+BEGIN_DYNAMICS
+	{
+		PF_TABNAME,
+		GE_Name,
+		NULL,
+		"Pcs7.bmp",
+		GC_Name1,
+		{"OnOption1", "OnOption2" ,"OnOption3",NULL, },
+		"OnGenerate","OnShowGenerateInfo",
+
+		{ 
+		  NULL
+		},
+
+	},
+END_DYNAMICS
+
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+void OnShowGenerateInfo(HWND hEdit)
+{
+	char text[400];
+	if (strlen(szExportfile)<36)
+	{
+		if (bExportAll)
+		{
+		sprintf(text, pszGenerateInfo2, szExportfile);
+		}
+		else
+		{
+		sprintf(text, pszGenerateInfo1, szExportfile);
+		}
+	}
+	else
+	{
+		char szExportFile2[40] = "...";
+		int k;
+		int m;
+		m = strlen(szExportfile);
+		for(k=0;k<36;k++)
+		{
+		szExportFile2[k+3] = szExportfile[m-36+k];
+		};
+
+		if (bExportAll)
+		{
+		sprintf(text,pszGenerateInfo2, szExportFile2);
+		}
+ 		else
+		{
+		sprintf(text,pszGenerateInfo1, szExportFile2);
+		}
+	}
+ 	SetWindowText(hEdit, text);
+
+}
+
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+void OnOption1(void)
+{
+HWND 			hWnd = NULL;
+RECT 			rect;
+char* 		p = NULL;
+HWND 			hcheck1 = NULL;
+HWND 			hcheck2 = NULL;
+
+	CreateStatic(0, 55,TEXT_GE_1);
+	CreateStatic(0, 70,TXTO1T2);
+	GetWindowRect(GetParent(hWnd), &rect);
+	MoveWindow(hWnd, 0, 25, (rect.right - rect.left), 22, TRUE);
+	hcheck1 = CreateRadioButton(5, 100,  TXTO1T3, &bExportAll);	
+	hcheck2 = CreateRadioButton(5, 120, TXTO1T4, &bExportOnlyOne);
+}
+
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+void OnOption2(void)
+{
+HWND 			hWnd = NULL;
+HWND			LBHwnd = NULL;
+char* 		p = NULL;
+static BOOL 	bFirst = TRUE;
+
+if(bFirst)
+	{
+		sprintf(szExportfile,GetProjectName());
+
+		p =(char *)	_mbsrchr((unsigned char *)szExportfile, '\\');
+		if( p == NULL )
+		{
+			sprintf(szExportfile,"C:\\Export.csv");
+		}
+		else
+		{
+			sprintf(p+1,"Export.csv");
+		}
+		sprintf(szControlFile,GetProjectName());
+		p =(char *)	_mbsrchr((unsigned char *)szControlFile, '\\');
+		if( p == NULL )
+		{	
+			sprintf(szControlFile,"C:\\TemplateControlAPL.cfg");
+		}
+		else
+		{
+			sprintf(p+1,"WScripts\\TemplateControlAPL.cfg");
+		}
+		bFirst = FALSE;
+	}
+
+	CreateStatic(0,50,TXTO1TE);
+   	hWnd=CreateFileBrowser(0,70,FB_WITHPATH,TXTO2T6,szExportfile);
+
+	CreateStatic(0,120,GC_TXTO2T5);
+   	LBHwnd =CreateFileBrowser(0,140,FB_WITHPATH,TXTO2T8,szControlFile);
+}
+
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+void OnOption3(void)
+{
+HWND 			hWnd = NULL;
+HWND 			hcheck1 = NULL;
+HWND 			hcheck2 = NULL;
+RECT 			rect;
+static BOOL		bFirst = TRUE;
+BOOL			no_split = FALSE;
+
+
+	if(bFirst)
+	{
+		bSplitContainer = TRUE;
+	}
+	CreateStatic(0, 55,TXTO3T1);
+	CreateStatic(0, 75,TXTO3T2);
+	GetWindowRect(GetParent(hWnd), &rect);
+	MoveWindow(hWnd, 0, 25, (rect.right - rect.left), 22, TRUE);
+	hcheck1 = CreateRadioButton(5, 95,  TXTO3T3, &bSplitContainer);	
+	hcheck2 = CreateRadioButton(5, 110,	TXTO3T4, &no_split);
+}
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+int OnGenerate(void)
+{
+int 				nRet = 0;
+HWND				hWnd = NULL;
+
+	nRet = MGExportObjects2( GetProjectName(),
+			   	GetPictureName(),
+				szExportfile,
+				szControlFile,
+		   		bSplitContainer,
+				bExportAll,
+		   		&CMNError);
+
+	GetParent(hWnd);
+	if (CMNError.dwError1 != 0)
+	{
+		if (CMNError.dwError1 == MGErrTermOK)
+			MessageBox(hWnd, CMNError.szErrorText, TXTShowFinisch, MB_OK | MB_ICONINFORMATION);
+		else
+			MessageBox(hWnd, CMNError.szErrorText, TXTShowErrorE, MB_OK | MB_ICONERROR);
+	}
+	PDLCSShowApp();
+return 0;
+}
+

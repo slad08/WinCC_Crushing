@@ -1,0 +1,155 @@
+#include "dynamic.h"
+#include "language.h"
+
+#include "dmdefs.h"
+#include "db.h"
+
+#pragma code("MasterGraphics.dll")
+	#include "MasterGraphics.h"
+#pragma code()
+
+#pragma code("pdlcsapi.dll")
+#include "pdlcsapi.h"
+#pragma code()
+#pragma option(mbcs)
+#ifndef LB_ADDSTRING
+#define LB_ADDSTRING    0x0180
+#endif
+
+#ifndef LB_SETCURSEL
+#define LB_SETCURSEL    0x0186
+#endif
+
+#include  	"dmclient.h"
+
+char *pszGenerateInfo = TEXT_GC_03;
+
+char		szControlFile[255]="";
+char		szTemplatepicture[255]="";
+BOOL		bChangeOne=TRUE;
+BOOL		bChangeAll=FALSE;
+CMN_ERROR 	CMNError;
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+BEGIN_PROPERTY_SCHEME
+END_PROPERTY_SCHEME
+
+DECLARE_WIZARD_FOR_OCX
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+BEGIN_DYNAMICS
+	{
+		PF_TABNAME,
+		GC_Name1,
+		NULL,
+		"Pcs7.bmp",
+		GC_Name2,
+		{"OnOption1", "OnOption2" ,NULL, },
+		"OnGenerate",
+		"OnShowGenerateInfo",
+		{ 
+			{ NULL, NULL } 
+		},
+	},
+END_DYNAMICS
+
+
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+void OnShowGenerateInfo(HWND hEdit)
+{
+	char text[400];
+	sprintf(text,pszGenerateInfo);
+	SetWindowText(hEdit, text);
+}
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+void OnOption1(void)
+{
+HWND 			hWnd = NULL;
+HWND			LBHwnd = NULL;
+RECT 			rect;
+char* 		p = NULL;
+static BOOL 	bFirst = TRUE;
+BOOL			fRet = FALSE;
+HWND 			hcheck1 = NULL;
+HWND 			hcheck2 = NULL;
+DWORD 		items = 0;
+int 			pp = 0;
+
+	CreateStatic(0, 55,GC_TXTO1T1);
+	CreateStatic(0, 70,GC_TXTO1T2);
+	GetWindowRect(GetParent(hWnd), &rect);
+	MoveWindow(hWnd, 0, 25, (rect.right - rect.left), 22, TRUE);
+	hcheck1 = CreateRadioButton(5, 100,  GC_TXTO1T3, &bChangeAll);	
+	hcheck2 = CreateRadioButton(5, 120, GC_TXTO1T4, &bChangeOne);
+
+}
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+void OnOption2(void)
+{
+HWND 			hWnd = NULL;
+HWND			LBHwnd = NULL;
+RECT 			rect;
+char* 		p = NULL;
+static BOOL 	bFirst = TRUE;
+BOOL			fRet = FALSE;
+DM_VARFILTER	dmFilter   = {DM_VARFILTER_TYPE, 1, NULL, NULL, NULL, NULL };
+DM_PROJECT_INFO	info;
+DWORD 		items = 0;
+int 			pp = 0;
+
+if(bFirst)
+	{
+		sprintf(szTemplatepicture,GetProjectName());
+		p =	(char *)_mbsrchr((unsigned char *)szTemplatepicture, '\\');
+		if( p == NULL )
+		{sprintf(szTemplatepicture,"C:\\@TEMPLATEAPLV8.pdl");}
+		else
+		{sprintf(p+1,"GraCS\\@TEMPLATEAPLV8.pdl");}
+		sprintf(szControlFile,GetProjectName());
+		p =(char *)	_mbsrchr((unsigned char *)szControlFile, '\\');
+		if( p == NULL )
+		{	
+			sprintf(szControlFile,"TemplateControlAPL.cfg");
+		}
+		else
+		{
+			sprintf(p+1,"WScripts\\TemplateControlAPL.cfg");
+		}
+		bFirst = FALSE;
+	}
+	CreateStatic(0,35,GC_TXTO2T7);
+	CreateStatic(0,50,GC_TXTO2T7a);
+   	hWnd=CreateFileBrowser(0,70,2,GC_TXTO2T8,szTemplatepicture);
+
+	CreateStatic(0,120,GC_TXTO2T5);
+   	LBHwnd =CreateFileBrowser(0,140,2,TXTO2T8,szControlFile);
+}
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+int OnGenerate(void)
+{
+
+char				*p = NULL;
+BOOL				fRet = FALSE;
+unsigned long  		key = 0;
+int   			nr = 0;
+char 				szErrorText[512];
+HWND				hWnd = NULL;
+
+	fRet = MGChangeObjects2( GetProjectName(), GetPictureName(), szTemplatepicture, szControlFile, bChangeAll, &CMNError);
+
+	GetParent(hWnd);
+	if (CMNError.dwError1 != 0)
+	{
+		if (CMNError.dwError1 == MGErrTermOK)
+			MessageBox(hWnd, CMNError.szErrorText, TXTShowFinisch, MB_OK | MB_ICONINFORMATION);
+		else
+			MessageBox(hWnd, CMNError.szErrorText, TXTShowErrorA, MB_OK | MB_ICONERROR);
+	}
+	PDLCSShowApp();
+	return 0;
+
+}

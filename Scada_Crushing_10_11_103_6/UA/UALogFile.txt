@@ -1,0 +1,171 @@
+2016-03-01 12:18:26.663 [p=5584, t=0x0e98] Sync: No redundant partner configured
+2016-03-01 12:18:26.663 [p=5584, t=0x0e98] Sync: Loading redundancy configuration
+2016-03-01 12:18:26.757 [p=5584, t=0x0e98] Sync: Redundancy is not activated
+2016-03-01 12:18:26.757 [p=5584, t=0x0e98] General: Disconnecting configuration.
+2016-03-01 12:18:26.757 [p=5584, t=0x0e98] General: Connecting configuration.
+2016-03-01 12:18:26.928 [p=5584, t=0x0e98] General: Connecting to runtime database "CC_Proj_tes_16_03_01_10_39_36R" on instance "USER-2016-03-01 12:18:26.959 [p=5584, t=0x0e98] General: Checking and upgrading archive table schemas
+2016-03-01 12:18:26.959 [p=5584, t=0x0e98] General: Archive table schemas are up to date now
+2016-03-01 12:18:27.069 [p=5584, t=0x0e98] CUAServer::ConnectLicenseServices
+2016-03-01 12:18:27.069 [p=5584, t=0x0e98] CUAServer::DisconnectLicenseServices
+2016-03-01 12:18:27.069 [p=5584, t=0x0e98] CoCreateInstance of CCLicense.CCLicense.1 succeeded.
+2016-03-01 12:18:27.084 [p=5584, t=0x0e98] CreateInstance of CLicenseTimerThread succeeded.
+2016-03-01 12:18:32.092 [p=5584, t=0x1918] CUAServer::OnLicenseCheck (first call).
+2016-03-01 14:32:57.111 [p=5584, t=0x00e0] General: ProjectEvent: 3
+2016-03-01 14:32:57.181 [p=5584, t=0x00e0] General: Start deactivating the project...
+2016-03-01 14:32:57.287 [p=5584, t=0x00e0] General: Project activated
+2016-03-01 14:32:57.339 [p=5584, t=0x00e0] Sync: Loading redundancy configuration
+2016-03-01 14:32:57.672 [p=5584, t=0x00e0] Sync: Redundancy is not activated
+2016-03-01 15:15:46.584 [p=5584, t=0x00e0] General: ProjectEvent: 4
+2016-03-01 15:15:46.615 [p=5584, t=0x1874] CUAServer::SendInvalidQCToPartner - On Deactivate send invalid QCs to partner
+2016-03-01 15:15:46.646 [p=5584, t=0x00e0] General: Start deactivating the project...
+2016-03-01 15:15:46.693 [p=5584, t=0x00e0] General: Project deactivated
+2016-03-01 15:15:52.153 [p=5584, t=0x00e0] General: ProjectEvent: 2
+2016-03-01 15:15:52.168 [p=5584, t=0x00e0] General: Start closing the project...
+2016-03-01 15:15:52.168 [p=5584, t=0x00e0] General: Start deactivating the project...
+2016-03-01 15:15:52.184 [p=5584, t=0x00e0] CUAServer::DisconnectLicenseServices
+2016-03-01 15:15:52.527 [p=5584, t=0x00e0] General: Disconnecting configuration.
+2016-03-01 17:00:59.952 [p=5228, t=0x1fb8] General: Project opened, dsncs="CC_Proj_tes_16_03_01_10_39_36" path="\\USER-2016-03-01 17:00:59.968 [p=5228, t=0x1fb8] Sync: No redundant partner configured
+2016-03-01 17:00:59.968 [p=5228, t=0x1fb8] Sync: Loading redundancy configuration
+2016-03-01 17:00:59.999 [p=5228, t=0x1fb8] Sync: Redundancy is not activated
+2016-03-01 17:00:59.999 [p=5228, t=0x1fb8] General: Disconnecting configuration.
+2016-03-01 17:00:59.999 [p=5228, t=0x1fb8] General: Connecting configuration.
+2016-03-01 17:01:00.139 [p=5228, t=0x1fb8] General: Connecting to runtime database "CC_Proj_tes_16_03_01_10_39_36R" on instance "USER-2016-03-01 17:01:00.170 [p=5228, t=0x1fb8] General: Checking and upgrading archive table schemas
+2016-03-01 17:01:00.170 [p=5228, t=0x1fb8] General: Archive table schemas are up to date now
+2016-03-01 17:01:00.248 [p=5228, t=0x1fb8] CUAServer::ConnectLicenseServices
+2016-03-01 17:01:00.248 [p=5228, t=0x1fb8] CUAServer::DisconnectLicenseServices
+2016-03-01 17:01:00.248 [p=5228, t=0x1fb8] CoCreateInstance of CCLicense.CCLicense.1 succeeded.
+2016-03-01 17:01:00.248 [p=5228, t=0x1fb8] CreateInstance of CLicenseTimerThread succeeded.
+2016-03-01 17:01:00.248 [p=5228, t=0x1fb8] General: Start deactivating the project...
+2016-03-01 17:01:00.248 [p=5228, t=0x1fb8] General: Project activated
+2016-03-01 17:01:00.248 [p=5228, t=0x1fb8] Sync: Loading redundancy configuration
+2016-03-01 17:01:00.264 [p=5228, t=0x1fb8] Sync: Redundancy is not activated
+2016-03-01 17:01:05.256 [p=5228, t=0x15f4] CUAServer::OnLicenseCheck (first call).
+2016-03-01 17:01:05.256 [p=5228, t=0x15f4] OnLicenseCheck: number of archives = 0.
+2016-03-01 17:05:00.016 [p=5228, t=0x1ed0] General: ProjectEvent: 4
+2016-03-01 17:05:00.038 [p=5228, t=0x1ed0] General: Start deactivating the project...
+2016-03-01 17:05:00.017 [p=5228, t=0x1824] CUAServer::SendInvalidQCToPartner - On Deactivate send invalid QCs to partner
+2016-03-01 17:05:00.068 [p=5228, t=0x1ed0] General: Project deactivated
+2016-03-01 17:06:16.831 [p=5228, t=0x1ed0] General: ProjectEvent: 3
+2016-03-01 17:06:16.972 [p=5228, t=0x1ed0] General: Start deactivating the project...
+2016-03-01 17:06:17.074 [p=5228, t=0x1ed0] General: Project activated
+2016-03-01 17:06:17.232 [p=5228, t=0x1ed0] Sync: Loading redundancy configuration
+2016-03-01 17:06:18.210 [p=5228, t=0x1ed0] Sync: Redundancy is not activated
+2016-03-01 17:09:38.255 [p=5228, t=0x1ed0] General: ProjectEvent: 4
+2016-03-01 17:09:38.276 [p=5228, t=0x1ed0] General: Start deactivating the project...
+2016-03-01 17:09:38.255 [p=5228, t=0x11cc] CUAServer::SendInvalidQCToPartner - On Deactivate send invalid QCs to partner
+2016-03-01 17:09:38.300 [p=5228, t=0x1ed0] General: Project deactivated
+2016-03-01 17:10:13.020 [p=5228, t=0x1ed0] General: ProjectEvent: 3
+2016-03-01 17:10:13.205 [p=5228, t=0x1ed0] General: Start deactivating the project...
+2016-03-01 17:10:13.524 [p=5228, t=0x1ed0] General: Project activated
+2016-03-01 17:10:13.737 [p=5228, t=0x1ed0] Sync: Loading redundancy configuration
+2016-03-01 17:10:14.942 [p=5228, t=0x1ed0] Sync: Redundancy is not activated
+2016-03-01 17:13:08.896 [p=5228, t=0x1ed0] General: ProjectEvent: 4
+2016-03-01 17:13:08.918 [p=5228, t=0x1ed0] General: Start deactivating the project...
+2016-03-01 17:13:08.897 [p=5228, t=0x1cfc] CUAServer::SendInvalidQCToPartner - On Deactivate send invalid QCs to partner
+2016-03-01 17:13:08.938 [p=5228, t=0x1ed0] General: Project deactivated
+2016-03-01 17:14:10.292 [p=5228, t=0x1ed0] General: ProjectEvent: 3
+2016-03-01 17:14:10.545 [p=5228, t=0x1ed0] General: Start deactivating the project...
+2016-03-01 17:14:10.823 [p=5228, t=0x1ed0] General: Project activated
+2016-03-01 17:14:11.037 [p=5228, t=0x1ed0] Sync: Loading redundancy configuration
+2016-03-01 17:14:12.474 [p=5228, t=0x1ed0] Sync: Redundancy is not activated
+2016-03-01 17:15:16.487 [p=5228, t=0x1ed0] General: ProjectEvent: 4
+2016-03-01 17:15:16.503 [p=5228, t=0x1ed0] General: Start deactivating the project...
+2016-03-01 17:15:16.487 [p=5228, t=0x1168] CUAServer::SendInvalidQCToPartner - On Deactivate send invalid QCs to partner
+2016-03-01 17:15:16.534 [p=5228, t=0x1ed0] General: Project deactivated
+2016-03-01 17:18:44.059 [p=5228, t=0x1ed0] General: ProjectEvent: 3
+2016-03-01 17:18:44.135 [p=5228, t=0x1ed0] General: Start deactivating the project...
+2016-03-01 17:18:44.181 [p=5228, t=0x1ed0] General: Project activated
+2016-03-01 17:18:44.270 [p=5228, t=0x1ed0] Sync: Loading redundancy configuration
+2016-03-01 17:18:45.070 [p=5228, t=0x1ed0] Sync: Redundancy is not activated
+2016-03-01 17:22:23.996 [p=5228, t=0x1ed0] General: ProjectEvent: 4
+2016-03-01 17:22:24.027 [p=5228, t=0x1ed0] General: Start deactivating the project...
+2016-03-01 17:22:23.996 [p=5228, t=0x1de4] CUAServer::SendInvalidQCToPartner - On Deactivate send invalid QCs to partner
+2016-03-01 17:22:24.042 [p=5228, t=0x1ed0] General: Project deactivated
+2016-03-01 17:23:06.554 [p=5228, t=0x1ed0] General: ProjectEvent: 3
+2016-03-01 17:23:06.740 [p=5228, t=0x1ed0] General: Start deactivating the project...
+2016-03-01 17:23:07.014 [p=5228, t=0x1ed0] General: Project activated
+2016-03-01 17:23:07.277 [p=5228, t=0x1ed0] Sync: Loading redundancy configuration
+2016-03-01 17:23:08.649 [p=5228, t=0x1ed0] Sync: Redundancy is not activated
+2016-03-01 17:26:29.952 [p=5228, t=0x1ed0] General: ProjectEvent: 4
+2016-03-01 17:26:29.967 [p=5228, t=0x1ed0] General: Start deactivating the project...
+2016-03-01 17:26:29.952 [p=5228, t=0x16b0] CUAServer::SendInvalidQCToPartner - On Deactivate send invalid QCs to partner
+2016-03-01 17:26:29.998 [p=5228, t=0x1ed0] General: Project deactivated
+2016-03-01 17:27:07.743 [p=5228, t=0x1ed0] General: ProjectEvent: 2
+2016-03-01 17:27:07.743 [p=5228, t=0x1ed0] General: Start closing the project...
+2016-03-01 17:27:07.743 [p=5228, t=0x1ed0] General: Start deactivating the project...
+2016-03-01 17:27:07.759 [p=5228, t=0x1ed0] CUAServer::DisconnectLicenseServices
+2016-03-01 17:27:08.024 [p=5228, t=0x1ed0] General: Disconnecting configuration.
+2016-03-02 10:15:50.214 [p=4000, t=0x1fa8] General: Project opened, dsncs="CC_Proj_tes_16_03_01_10_39_36" path="\\USER-2016-03-02 10:15:50.242 [p=4000, t=0x1fa8] Sync: No redundant partner configured
+2016-03-02 10:15:50.245 [p=4000, t=0x1fa8] Sync: Loading redundancy configuration
+2016-03-02 10:15:50.289 [p=4000, t=0x1fa8] Sync: Redundancy is not activated
+2016-03-02 10:15:50.291 [p=4000, t=0x1fa8] General: Disconnecting configuration.
+2016-03-02 10:15:50.292 [p=4000, t=0x1fa8] General: Connecting configuration.
+2016-03-02 10:15:50.447 [p=4000, t=0x1fa8] General: Connecting to runtime database "CC_Proj_tes_16_03_01_10_39_36R" on instance "USER-2016-03-02 10:15:50.465 [p=4000, t=0x1fa8] General: Checking and upgrading archive table schemas
+2016-03-02 10:15:50.466 [p=4000, t=0x1fa8] General: Archive table schemas are up to date now
+2016-03-02 10:15:50.559 [p=4000, t=0x1fa8] CUAServer::ConnectLicenseServices
+2016-03-02 10:15:50.561 [p=4000, t=0x1fa8] CUAServer::DisconnectLicenseServices
+2016-03-02 10:15:50.565 [p=4000, t=0x1fa8] CoCreateInstance of CCLicense.CCLicense.1 succeeded.
+2016-03-02 10:15:50.567 [p=4000, t=0x1fa8] CreateInstance of CLicenseTimerThread succeeded.
+2016-03-02 10:15:50.568 [p=4000, t=0x1fa8] General: Start deactivating the project...
+2016-03-02 10:15:50.569 [p=4000, t=0x1fa8] General: Project activated
+2016-03-02 10:15:50.570 [p=4000, t=0x1fa8] Sync: Loading redundancy configuration
+2016-03-02 10:15:50.579 [p=4000, t=0x1fa8] Sync: Redundancy is not activated
+2016-03-02 10:15:55.568 [p=4000, t=0x18ac] CUAServer::OnLicenseCheck (first call).
+2016-03-02 10:15:55.572 [p=4000, t=0x18ac] OnLicenseCheck: number of archives = 0.
+2016-03-02 10:18:56.223 [p=4000, t=0x1880] General: ProjectEvent: 4
+2016-03-02 10:18:56.244 [p=4000, t=0x1880] General: Start deactivating the project...
+2016-03-02 10:18:56.224 [p=4000, t=0x0fd4] CUAServer::SendInvalidQCToPartner - On Deactivate send invalid QCs to partner
+2016-03-02 10:18:56.263 [p=4000, t=0x1880] General: Project deactivated
+2016-03-02 10:19:45.980 [p=4000, t=0x1880] General: ProjectEvent: 3
+2016-03-02 10:19:46.050 [p=4000, t=0x1880] General: Start deactivating the project...
+2016-03-02 10:19:46.175 [p=4000, t=0x1880] General: Project activated
+2016-03-02 10:19:46.252 [p=4000, t=0x1880] Sync: Loading redundancy configuration
+2016-03-02 10:19:46.920 [p=4000, t=0x1880] Sync: Redundancy is not activated
+2016-03-02 10:20:31.096 [p=4000, t=0x1880] General: ProjectEvent: 4
+2016-03-02 10:20:31.116 [p=4000, t=0x1880] General: Start deactivating the project...
+2016-03-02 10:20:31.096 [p=4000, t=0x1bac] CUAServer::SendInvalidQCToPartner - On Deactivate send invalid QCs to partner
+2016-03-02 10:20:31.136 [p=4000, t=0x1880] General: Project deactivated
+2016-03-02 10:22:01.282 [p=4000, t=0x1880] General: ProjectEvent: 3
+2016-03-02 10:22:01.509 [p=4000, t=0x1880] General: Start deactivating the project...
+2016-03-02 10:22:01.704 [p=4000, t=0x1880] General: Project activated
+2016-03-02 10:22:01.966 [p=4000, t=0x1880] Sync: Loading redundancy configuration
+2016-03-02 10:22:03.533 [p=4000, t=0x1880] Sync: Redundancy is not activated
+2016-03-02 12:06:48.188 [p=4000, t=0x1fc0] Sync: Redundancy configuration file changed
+2016-03-02 12:06:48.191 [p=4000, t=0x1fc0] Sync: Loading redundancy configuration
+2016-03-02 12:06:48.210 [p=4000, t=0x1fc0] Sync: Redundancy is not activated
+2016-03-02 13:37:35.316 [p=4000, t=0x0fd8] CUAServer::SendInvalidQCToPartner - On Deactivate send invalid QCs to partner
+2016-03-02 13:37:35.317 [p=4000, t=0x1880] General: ProjectEvent: 4
+2016-03-02 13:37:35.337 [p=4000, t=0x1880] General: Start deactivating the project...
+2016-03-02 13:37:35.381 [p=4000, t=0x1880] General: Project deactivated
+2016-03-02 13:38:45.017 [p=4000, t=0x1880] General: ProjectEvent: 3
+2016-03-02 13:38:45.156 [p=4000, t=0x1880] General: Start deactivating the project...
+2016-03-02 13:38:45.280 [p=4000, t=0x1880] General: Project activated
+2016-03-02 13:38:45.328 [p=4000, t=0x1880] Sync: Loading redundancy configuration
+2016-03-02 13:38:46.363 [p=4000, t=0x1880] Sync: Redundancy is not activated
+2016-03-02 13:39:50.383 [p=4000, t=0x1880] General: ProjectEvent: 4
+2016-03-02 13:39:50.411 [p=4000, t=0x1880] General: Start deactivating the project...
+2016-03-02 13:39:50.383 [p=4000, t=0x0d98] CUAServer::SendInvalidQCToPartner - On Deactivate send invalid QCs to partner
+2016-03-02 13:39:50.430 [p=4000, t=0x1880] General: Project deactivated
+2016-03-02 13:42:32.818 [p=4000, t=0x1880] General: ProjectEvent: 3
+2016-03-02 13:42:32.969 [p=4000, t=0x1880] General: Start deactivating the project...
+2016-03-02 13:42:33.163 [p=4000, t=0x1880] General: Project activated
+2016-03-02 13:42:33.405 [p=4000, t=0x1880] Sync: Loading redundancy configuration
+2016-03-02 13:42:34.759 [p=4000, t=0x1880] Sync: Redundancy is not activated
+2016-03-02 13:45:15.208 [p=4000, t=0x1880] General: ProjectEvent: 4
+2016-03-02 13:45:15.228 [p=4000, t=0x1880] General: Start deactivating the project...
+2016-03-02 13:45:15.208 [p=4000, t=0x22a4] CUAServer::SendInvalidQCToPartner - On Deactivate send invalid QCs to partner
+2016-03-02 13:45:15.250 [p=4000, t=0x1880] General: Project deactivated
+2016-03-02 13:50:28.679 [p=4000, t=0x1880] General: ProjectEvent: 3
+2016-03-02 13:50:28.733 [p=4000, t=0x1880] General: Start deactivating the project...
+2016-03-02 13:50:28.790 [p=4000, t=0x1880] General: Project activated
+2016-03-02 13:50:28.806 [p=4000, t=0x1880] Sync: Loading redundancy configuration
+2016-03-02 13:50:29.956 [p=4000, t=0x1880] Sync: Redundancy is not activated
+2016-03-02 14:58:36.230 [p=4000, t=0x1880] General: ProjectEvent: 4
+2016-03-02 14:58:36.230 [p=4000, t=0x2604] CUAServer::SendInvalidQCToPartner - On Deactivate send invalid QCs to partner
+2016-03-02 14:58:36.293 [p=4000, t=0x1880] General: Start deactivating the project...
+2016-03-02 14:58:36.312 [p=4000, t=0x1880] General: Project deactivated
+2016-03-02 14:59:26.032 [p=4000, t=0x1880] General: ProjectEvent: 3
+2016-03-02 14:59:26.094 [p=4000, t=0x1880] General: Start deactivating the project...
+2016-03-02 14:59:26.162 [p=4000, t=0x1880] General: Project activated
+2016-03-02 14:59:26.202 [p=4000, t=0x1880] Sync: Loading redundancy configuration
+2016-03-02 14:59:27.060 [p=4000, t=0x1880] Sync: Redundancy is not activated

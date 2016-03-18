@@ -1,0 +1,134 @@
+#include "dynamic.h"
+#include "language.h"
+
+#pragma code("pdlcsapi.dll")
+#include "pdlcsapi.h"
+#pragma code()
+#pragma option(mbcs)
+
+#ifndef LB_ADDSTRING
+#define LB_ADDSTRING    0x0180
+#endif
+
+#ifndef LB_SETCURSEL
+#define LB_SETCURSEL    0x0186
+#endif
+
+
+#define XGAP     15
+#define YGAP     5
+
+
+DECLARE_WIZARD_FOR_OCX
+
+BEGIN_PROPERTY_SCHEME
+{ "CollectValue", VT_UI4 },
+{ "Relevant", VT_BOOL },
+{ "SignificantMask", VT_UI4 },
+END_PROPERTY_SCHEME
+
+
+BEGIN_DYNAMICS
+	{
+		PF_TABNAME,
+		GD1_Name1,
+		NULL,
+		"BPC.bmp",
+		GD1_Name2
+		GD1_Name3,
+		{ NULL, NULL, },
+		"OnGenerate",
+		"OnShowGenerateInfo",
+		{ 
+			JCR_TRIGGERS,
+			{ NULL,NULL },
+		},
+
+	},
+END_DYNAMICS
+
+DECLARE_JCR_TRIGGERS
+
+
+void OnOption1(void)
+{
+}
+
+void OnShowGenerateInfo(HWND hEdit)
+{
+
+	char *test = TEXT_GD_11
+			TEXT_GD_12
+			TEXT_GD_13
+				"    %s\r\n"
+			TEXT_GD_14
+				"    %s.\r\n"
+				;
+				 
+	char text[400];
+	sprintf(text,test,gsz_Trigger,GetObjectName());
+ 	SetWindowText(hEdit, text);
+}
+
+
+
+
+void OnGenerate(void)
+{
+PCMN_ERROR pError;
+AP_BLOB *blob;
+char ifcode[255];
+char code[2000];
+char sError[500];
+char* p;
+LINK_INFO lpLink;
+char szAktPic[256];
+char szNewPic[256];
+DWORD dwRelevantValue;
+
+	
+
+    ifcode[0]=0;
+	
+	if (g_Trigger==KEYBOARDDOWN)
+	  sprintf(ifcode,"if (nChar==%d) ",g_KeyPressed[0]);
+
+ 	sprintf(code,"%s",ifcode);
+
+ _mbscat((unsigned char *)code,(unsigned char *)"char szNewPic[256];\r\n");
+ _mbscat((unsigned char *)code,(unsigned char *)"\r\n");
+ _mbscat((unsigned char *)code,(unsigned char *)"if (SSMGetSAPictureName( lpszPictureName,  lpszObjectName, 0, 0,szNewPic, 256 ))\r\n");
+ _mbscat((unsigned char *)code,(unsigned char *)"SSMChangeWorkField(SSMGetScreen(lpszPictureName),szNewPic, TRUE );\r\n\r\n");
+ 
+	switch( g_Trigger )
+	{
+		case MOUSECLICK:
+			blob = GenerateBLOB("#include \"apdefap.h\"\r\n"
+                        		"void OnClick(char* lpszPictureName, char* lpszObjectName,"
+		        	        	"char* lpszPropertyName) {","}", code);
+			break;
+
+		case MOUSELBUTTONDOWN:
+			blob = GenerateBLOB("#include \"apdefap.h\"\r\n"
+						"void OnLButtonDown(char* lpszPictureName, char* lpszObjectName,"
+						"char* lpszPropertyName, UINT nFlags, int x, int y) {","}", code);
+			break;
+
+
+		case MOUSERBUTTONDOWN:
+			blob = GenerateBLOB("#include \"apdefap.h\"\r\n"
+						"void OnRButtonDown(char* lpszPictureName, char* lpszObjectName,"
+						"char* lpszPropertyName, UINT nFlags, int x, int y) {","}", code);
+			break;
+		default:
+			break;
+	}
+
+
+
+	BEGIN_JCR_BLOBERRORS
+		SetAction(NULL, blob, g_Trigger);
+	END_JCR_BLOBERRORS
+	DeleteBLOB(blob);
+	  
+}

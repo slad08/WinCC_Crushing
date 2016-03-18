@@ -1,0 +1,335 @@
+// DynamicWizardSkript
+// Author:	A&D AS RD 21, Siemens AG
+// Date:	18.07.2003
+// Lang.:	enu
+// Generates a mouse click action for the selected WinCC object, which opens an SFC.
+
+#include "dynamic.h"
+#include "language.h"
+
+#pragma code("pdlcsapi.dll")
+#include "pdlcsapi.h"
+#pragma code()
+#pragma option(mbcs)
+
+#ifndef LB_ADDSTRING
+#define LB_ADDSTRING    0x0180
+#endif
+
+#ifndef LB_SETCURSEL
+#define LB_SETCURSEL    0x0186
+#endif
+
+#pragma code("sfccli.dll")
+#include "sfccli.h"
+#pragma code()
+
+BEGIN_PROPERTY_SCHEME
+END_PROPERTY_SCHEME
+
+
+BEGIN_DYNAMICS
+	{
+		SFC_TABNAME,
+		SFC_Name1,
+		NULL,
+		"Pcs7.bmp",
+		SFC_Name2,
+		{ "OnOption1", "OnOption2", NULL, },
+		"OnGenerate",
+		"OnShowGenerateInfo",
+		{ 
+			JCR_TRIGGERS,
+			{ NULL, NULL },
+		},
+
+	},
+END_DYNAMICS
+
+
+DECLARE_JCR_TRIGGERS
+
+
+char g_ProjectFile[512];
+char g_ProjectPath[512];
+char g_Picture[256];
+char g_CtrlObjectName[256];
+
+char g_PlannameAlt[256] = "";
+char g_PlannameNeu[256] = "*";
+
+
+char g_SFCDataVersion[ SFC_ESDATAVERSION_LEN ] = SFC_ESDATAVERSION_MINV6; // faceplates exists since V6.0 for sfc's
+BOOL g_IsInstance = FALSE;
+SFC_VIEW g_DefaultView = SFC_VW_FACEPLATE;
+
+BOOL g_Faceplate = TRUE;
+BOOL g_Overview = FALSE;
+BOOL g_Section = FALSE;
+
+
+void getOldNameAndView()
+{
+	BOOL rc = FALSE;
+	unsigned short* pBstr =0;
+	CMN_ERROR _cmnError;
+	
+	_mbscpy((unsigned char *)g_PlannameAlt, (unsigned char *)g_PlannameNeu);
+}
+
+BOOL ValidateOption1()
+{
+	// check entered chartname for existance
+	// return TRUE, if the values are correct
+
+//	return SFCIsChartExisting(g_PlannameNeu);
+	return ( g_PlannameNeu[0] != '\0' && g_PlannameNeu[0] != '*' );
+
+} // ValidateOption1
+
+void OnOption1(void)
+{
+	char *p;
+	HWND hWnd;
+	RECT rect;
+
+	SetValidateFct("ValidateOption1");
+
+	memset(g_ProjectFile ,0, 255);
+	sprintf(g_ProjectFile, GetProjectName());
+	sprintf(g_ProjectPath, g_ProjectFile);
+	p = (char *) _mbsrchr((unsigned char *)g_ProjectPath, '\\');
+	if (p)
+	{
+		*p = 0;
+	}
+	memset(g_Picture, 0, 255);
+	sprintf(g_Picture, GetPictureName());
+
+	memset(g_CtrlObjectName, 0, 255);
+	sprintf(g_CtrlObjectName, GetObjectName());
+
+//	getOldNameAndView();
+	CreateStatic(0,30,TEXT_SFC_08);
+      hWnd=CreatePackageBrowserEx(0,50,"CSFCAso.CSFCAso.1",g_PlannameNeu);
+	GetWindowRect(GetParent(hWnd), &rect);
+	MoveWindow(hWnd, 0, 50, (rect.right - rect.left), 20, TRUE);
+	
+} // OnOption1
+
+
+BOOL ValidateOption2()
+{
+	// check entered chartname for existance
+	// return TRUE, if the values are correct
+
+	return (g_Faceplate || g_Section || g_Overview);
+
+} // ValidateOption2
+
+void OnOption2(void)
+{
+	HWND hWnd;
+	char Titel[256] = "";
+
+	SetValidateFct("ValidateOption2");
+
+	sprintf( Titel, "%s", TEXT_SFC_09 );
+	CreateStatic( 0, 30, Titel );
+	sprintf( Titel, "%s", g_PlannameNeu );
+	CreateStatic( 0, 50, Titel );
+
+	if( _mbscmp( (unsigned char *)g_PlannameNeu, (unsigned char *)g_PlannameAlt ) != 0 ) // planname has changed ?
+	{
+		//	store old planname
+		_mbscpy((unsigned char *)g_PlannameAlt, (unsigned char *)g_PlannameNeu);
+		// get default settings
+		SFCGetCSInfo( g_PlannameNeu, g_SFCDataVersion, SFC_ESDATAVERSION_LEN - 1, &g_IsInstance, &g_DefaultView );
+		g_Faceplate = FALSE;
+		g_Overview = FALSE;	
+		g_Section = FALSE;
+		switch( g_DefaultView )
+		{
+		case SFC_VW_OVERVIEW:
+			g_Overview = TRUE;
+			break;
+		case SFC_VW_SECTION:
+			g_Section = TRUE;
+			break;
+		case SFC_VW_FACEPLATE:
+			g_Faceplate = TRUE;
+			break;
+		}
+	}
+	if( _mbscmp( (unsigned char *)g_SFCDataVersion, (unsigned char *)SFC_ESDATAVERSION_OLDERV6 ) == 0 )
+	{
+		hWnd = CreateRadioButton( 20, 70, TEXT_SFC_13, &g_Overview );
+		hWnd = CreateRadioButton( 20, 90, TEXT_SFC_14, &g_Section );
+	}
+	else
+	{
+		hWnd = CreateRadioButton( 20, 70, TEXT_SFC_20, &g_Faceplate );
+		hWnd = CreateRadioButton( 20, 90, TEXT_SFC_13, &g_Overview );
+		hWnd = CreateRadioButton( 20, 110, TEXT_SFC_14, &g_Section );
+	}
+} // OnOption2
+
+
+void OnShowGenerateInfo(HWND hEdit)
+{
+	char text[400];
+
+	char *fmt =  TEXT_SFC_23
+	             "    %s\r\n"
+	             "%s\r\n"
+	             "    %s\r\n"
+				 TEXT_SFC_24
+	             "    %s\r\n"
+				 TEXT_SFC_27
+	             "    %s.\r\n"
+				 "\r\n"
+				 ;
+
+	char *fmt1 = TEXT_SFC_25;
+
+	char ButtonText[256] = "";
+	if( g_Faceplate == TRUE )
+	{
+		strcpy( ButtonText, TEXT_SFC_20 );
+	}
+	else if( g_Overview == TRUE )
+	{
+		strcpy( ButtonText, TEXT_SFC_13 );
+	}	
+	else if( g_Section == TRUE )
+	{
+		strcpy( ButtonText, TEXT_SFC_14 );
+	}
+	switch( g_Trigger )
+	{
+		case MOUSECLICK:
+		  	sprintf(text, fmt, g_PlannameNeu, fmt1, gsz_Trigger, g_CtrlObjectName, ButtonText);
+			break;
+		case MOUSELBUTTONDOWN:
+		case MOUSERBUTTONDOWN:
+		  	sprintf(text, fmt, g_PlannameNeu, fmt1, gsz_Trigger, g_CtrlObjectName, ButtonText);
+			break;
+		default:
+			break;
+	}
+
+	SetWindowText(hEdit, text);
+} // OnShowGenerateInfo
+
+ 
+void OnGenerate(void)
+{
+	char sError[500];
+	char code[2000];
+	char szSourceCode[2000];
+	AP_BLOB *blob;
+/*********** Start Insert XRef Section *******/
+	char* szChartNames[1];
+/*********** End Insert XRef Section *******/
+
+/*********** Start Insert XRef Section *******/
+	szSourceCode[0] = 0;
+	szChartNames[0] = g_PlannameNeu;
+	InsertXrefSection(szSourceCode,szChartNames,1,NULL,0);
+/*********** End Insert XRef Section *******/
+	if( g_Faceplate )
+	{
+		sprintf( code,
+			"TCHAR szFullDmVarName[MAX_DM_VAR_NAME + 1 + 32];\r\n"
+			"{\r\n"
+			"  TCHAR* pServerPrefix = NULL;\r\n"
+  		      "  TCHAR* pTagPrefix = NULL;\r\n"
+		      "  TCHAR* pWindowPrefix = NULL;\r\n"
+			"  GetServerTagPrefix(&pServerPrefix,&pTagPrefix,&pWindowPrefix);\r\n"
+			"\r\n"
+			"  szFullDmVarName[0] = \'\\0\';\r\n"
+			"\r\n"
+			"  if (pServerPrefix && pServerPrefix[0])\r\n"
+			"    _mbscpy ((unsigned char *)szFullDmVarName, (unsigned char *)pServerPrefix);\r\n"
+			"  else if (pTagPrefix && pTagPrefix[0])\r\n"
+			"    _mbscpy ((unsigned char *)szFullDmVarName, (unsigned char *)pTagPrefix);\r\n"
+			"\r\n"
+			"  _mbscat((unsigned char *)szFullDmVarName,(unsigned char *)TAG_0);\r\n"
+			"}\r\n"
+			"OpenSFCFaceplate(szFullDmVarName);\r\n"
+			);
+	}
+	else
+	{
+		sprintf( code,
+			"#pragma code (\"sfccli.dll\")\r\n"
+			"#include \"sfccli.h\"\r\n"
+			"#pragma code ()\r\n"
+			"\r\n"
+			"long left, top, width, height;\r\n"
+			"\r\n"
+			"TCHAR szFullDmVarName[MAX_DM_VAR_NAME + 1 + 32];\r\n"
+			"{\r\n"
+			"  TCHAR* pServerPrefix = NULL;\r\n"
+  		      "  TCHAR* pTagPrefix = NULL;\r\n"
+		      "  TCHAR* pWindowPrefix = NULL;\r\n"
+			"  GetServerTagPrefix(&pServerPrefix,&pTagPrefix,&pWindowPrefix);\r\n"
+			"\r\n"
+			"  szFullDmVarName[0] = \'\\0\';\r\n"
+			"\r\n"
+			"  if (pServerPrefix && pServerPrefix[0])\r\n"
+			"    _mbscpy ((unsigned char *)szFullDmVarName, (unsigned char *)pServerPrefix);\r\n"
+			"  else if (pTagPrefix && pTagPrefix[0])\r\n"
+			"    _mbscpy ((unsigned char *)szFullDmVarName, (unsigned char *)pTagPrefix);\r\n"
+			"\r\n"
+			"  _mbscat((unsigned char *)szFullDmVarName,(unsigned char *)TAG_0);\r\n"
+			"}\r\n"
+			"\r\n"
+			"#ifdef RUN_ON_WEBNAVIGATOR\r\n"
+			"OpenSFCFaceplate( szFullDmVarName );\r\n"
+			"#else\r\n"
+			"SSMGetWorkFieldCoordinates(SSMGetScreen(lpszPictureName), &left, &top, &width, &height);\r\n"
+			"// Übersicht\r\n"
+			"%sSFCOpenOverview(szFullDmVarName, left, top, width, height, (void*)0);\r\n"
+			"// oder Detail\r\n"
+			"%sSFCOpenSection(szFullDmVarName, left, top, width, height, (void*)0);\r\n"
+			"#endif\r\n"
+			, g_Overview ? "" :"//", g_Section ? "" :"//"
+			);
+	}
+	_mbscat((unsigned char *)szSourceCode,(unsigned char *) code);
+
+	// Bemerkung: In SetAction wird der Funktionsaufruf immer angepasst. 
+	// Im Blob ist nur die Parameterleiste wirklich von Bedeutung!
+	switch( g_Trigger )
+	{
+		case MOUSECLICK:
+			blob = GenerateBLOB("#include \"apdefap.h\"\r\n"
+                        		"void OnClick(char* lpszPictureName, char* lpszObjectName,"
+		        	        	"char* lpszPropertyName) {","}", szSourceCode);
+			break;
+
+		case MOUSELBUTTONDOWN:
+			blob = GenerateBLOB("#include \"apdefap.h\"\r\n"
+						"void OnLButtonDown(char* lpszPictureName, char* lpszObjectName,"
+						"char* lpszPropertyName, UINT nFlags, int x, int y) {","}", szSourceCode);
+			break;
+
+
+		case MOUSERBUTTONDOWN:
+			blob = GenerateBLOB("#include \"apdefap.h\"\r\n"
+						"void OnRButtonDown(char* lpszPictureName, char* lpszObjectName,"
+						"char* lpszPropertyName, UINT nFlags, int x, int y) {","}", szSourceCode);
+			break;
+		default:
+			break;
+	}
+
+
+
+
+	BEGIN_JCR_BLOBERRORS
+		SetAction(NULL, blob, g_Trigger);
+	END_JCR_BLOBERRORS
+	DeleteBLOB(blob);
+} // OnGenerate

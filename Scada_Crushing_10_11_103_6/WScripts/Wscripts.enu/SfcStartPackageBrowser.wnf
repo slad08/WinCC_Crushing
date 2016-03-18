@@ -1,0 +1,153 @@
+// DynamicWizardSkript
+// Author:	A&D AS RD 21, Siemens AG
+// Date:	18.07.2003
+// Lang.:	enu
+// Generates a mouse click action for the selected WinCC object, which opens the SFC Browser.
+
+#include "dynamic.h"
+#include "language.h"
+
+#pragma code("pdlcsapi.dll")
+#include "pdlcsapi.h"
+#pragma code()
+#pragma option(mbcs)
+
+#ifndef LB_ADDSTRING
+#define LB_ADDSTRING    0x0180
+#endif
+
+#ifndef LB_SETCURSEL
+#define LB_SETCURSEL    0x0186
+#endif
+
+BEGIN_PROPERTY_SCHEME
+END_PROPERTY_SCHEME
+
+
+BEGIN_DYNAMICS
+	{
+		SFC_TABNAME,
+		SFC_Name5,
+		NULL,
+		"Pcs7.bmp",
+		SFC_Name6,
+		{ NULL, NULL, NULL, },
+		"OnGenerate",
+		"OnShowGenerateInfo",
+		{ 
+			JCR_TRIGGERS,
+			{ NULL, NULL },
+		},
+
+	},
+END_DYNAMICS
+
+
+
+DECLARE_JCR_TRIGGERS
+
+
+char g_ProjectFile[512];
+char g_ProjectPath[512];
+char g_Picture[256];
+char g_CtrlObjectName[256];
+
+void OnShowGenerateInfo(HWND hEdit)
+{
+	char text[400];
+
+	char *fmt =  TEXT_SFC_02
+	             "%s\r\n"
+	             "    %s\r\n"
+				 TEXT_SFC_03
+	             "    %s.\r\n"
+				 "\r\n"
+				  ;
+
+	char *fmt1 = TEXT_SFC_04;
+	char *fmt2 = TEXT_SFC_05;
+				 ;
+	memset(g_CtrlObjectName, 0, 255);
+	sprintf(g_CtrlObjectName, GetObjectName());
+
+	switch( g_Trigger )
+	{
+		case MOUSECLICK:
+		  	sprintf(text, fmt, fmt1, gsz_Trigger, g_CtrlObjectName);
+			break;
+
+		case MOUSELBUTTONDOWN:
+		case MOUSERBUTTONDOWN:
+		  	sprintf(text, fmt, fmt2, gsz_Trigger, g_CtrlObjectName);
+			break;
+		default:
+			break;
+	}
+
+
+	SetWindowText(hEdit, text);
+}
+
+ 
+void OnGenerate(void)
+{
+	char sError[500];
+	char code[500];
+	char szSourceCode[2000];
+	AP_BLOB *blob;
+
+/*********** Start Insert XRef Section *******/
+/*********** End Insert XRef Section *******/
+
+/*********** Start Insert XRef Section *******/
+	szSourceCode[0] = 0;
+	InsertXrefSection(szSourceCode,NULL,0,NULL,0);
+/*********** End Insert XRef Section *******/
+
+	sprintf (code,
+			"#pragma code (\"sfccli.dll\")\r\n"
+			"#include \"sfccli.h\"\r\n"
+			"#pragma code ()\r\n"
+			"\r\n"
+			"long left, top, width, height;\r\n"
+			"\r\n"
+			"SSMGetWorkFieldCoordinates(SSMGetScreen(lpszPictureName), &left, &top, &width, &height);\r\n"
+			"// Package Browser öffnen\r\n"
+			"SFCOpenChartInRect(left, top, width, height);\r\n"
+			);
+
+	_mbscat((unsigned char *)szSourceCode,(unsigned char *) code);
+
+	// Bemerkung: In SetAction wird der Funktionsaufruf immer angepasst. 
+	// Im Blob ist nur die Parameterleiste wirklich von Bedeutung!
+	switch( g_Trigger )
+	{
+		case MOUSECLICK:
+			blob = GenerateBLOB("#include \"apdefap.h\"\r\n"
+                        		"void OnClick(char* lpszPictureName, char* lpszObjectName,"
+		        	        	"char* lpszPropertyName) {","}", szSourceCode);
+			break;
+
+		case MOUSELBUTTONDOWN:
+			blob = GenerateBLOB("#include \"apdefap.h\"\r\n"
+						"void OnLButtonDown(char* lpszPictureName, char* lpszObjectName,"
+						"char* lpszPropertyName, UINT nFlags, int x, int y) {","}", szSourceCode);
+			break;
+
+
+		case MOUSERBUTTONDOWN:
+			blob = GenerateBLOB("#include \"apdefap.h\"\r\n"
+						"void OnRButtonDown(char* lpszPictureName, char* lpszObjectName,"
+						"char* lpszPropertyName, UINT nFlags, int x, int y) {","}", szSourceCode);
+			break;
+		default:
+			break;
+	}
+
+
+
+	BEGIN_JCR_BLOBERRORS
+		SetAction(NULL, blob, g_Trigger);
+	END_JCR_BLOBERRORS
+	DeleteBLOB(blob);
+}

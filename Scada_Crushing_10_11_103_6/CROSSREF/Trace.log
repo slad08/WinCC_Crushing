@@ -1,0 +1,580 @@
+2016-03-01 12:19:26.910 DEBUG   Main                      PrjMgr.Connect(). ExecTime = 19,28 ms. Init I18NResources. ExecTime = 0,19 ms
+2016-03-01 12:19:27.051 DEBUG   Main                      InitializeComponent. ExecTime = 130,50 ms
+2016-03-01 12:19:27.082 DEBUG   Main                      InitWindowsProperties. ExecTime = 39,79 ms
+2016-03-01 12:19:27.113 DEBUG   Main                      Check Licenses. ExecTime = 13,64 ms
+2016-03-01 12:19:27.113 DEBUG   Main                      Init done
+2016-03-01 12:19:27.191 DEBUG   Main                      Form shown
+2016-03-01 12:19:27.456 DEBUG   Main                      Start Initializer
+2016-03-01 12:19:29.334 INFO    TableInitializer          Initialize tables
+2016-03-01 12:19:29.646 INFO    TableInitializer          Initialize tables done
+2016-03-01 12:19:30.270 DEBUG   TextDataProvider          InsertTexts count = 86. ExecTime = 14,41 ms
+2016-03-01 12:19:30.270 INFO    TextDataProvider          InitialData(). Count = 86. ExecTime = 28,14 ms
+2016-03-01 12:19:30.285 DEBUG   VariableDataProvider      InsertVariables count = 32. ExecTime = 9,88 ms
+2016-03-01 12:19:30.301 DEBUG   VariableDataProvider      ProcessData(MCPTVARIABLEDESC). Count = 0. ExecTime = 5,59 ms
+2016-03-01 12:19:30.301 INFO    VariableDataProvider      InitialData(). Count = 32. ExecTime = 26,52 ms
+2016-03-01 12:19:30.316 DEBUG   VarInstanceDataProvider   InsertVariables count = 0. ExecTime = 4,68 ms
+2016-03-01 12:19:30.316 DEBUG   VarInstanceDataProvider   ProcessData(MCPTVARIABLEDESC_Instances). Count = 0. ExecTime = 3,22 ms
+2016-03-01 12:19:30.316 INFO    VarInstanceDataProvider   InitialData(). Count = 0. ExecTime = 14,12 ms
+2016-03-01 12:19:30.332 DEBUG   PtmDataProvider           ProcessData(TM_Hierarchie). Count = 0. ExecTime = 1,45 ms
+2016-03-01 12:19:30.332 INFO    PtmDataProvider           InitialData(). Count = 0. ExecTime = 11,85 ms
+2016-03-01 12:19:30.332 DEBUG   ComponentListDataProvider ProcessData(TM_TAG_ATTRTABLE). Count = 0. ExecTime = 1,07 ms
+2016-03-01 12:19:30.332 INFO    ComponentListDataProvider InitialData(). Count = 0. ExecTime = 8,44 ms
+2016-03-01 12:19:30.348 DEBUG   LbmDataProvider           ProcessData(LBM_INFO). Count = 0. ExecTime = 1,49 ms
+2016-03-01 12:19:30.348 INFO    LbmDataProvider           InitialData(). Count = 0. ExecTime = 13,32 ms
+2016-03-01 12:19:30.379 DEBUG   UserAdminDataProvider     ProcessData(PW_LINE). Count = 20. ExecTime = 24,30 ms
+2016-03-01 12:19:30.379 INFO    UserAdminDataProvider     InitialData(). Count = 20. ExecTime = 32,79 ms
+2016-03-01 12:19:30.894 DEBUG   DataLoader                Read AlarmTags. Count = 7, ExecTime = 4,46 ms
+2016-03-01 12:19:30.925 DEBUG   AlarmMessagesDataProvider ProcessData(MSMsgs). Count = 8. ExecTime = 21,86 ms
+2016-03-01 12:19:30.925 DEBUG   AlarmMessagesDataProvider ProcessData(MSActions). Count = 0. ExecTime = 2,95 ms
+2016-03-01 12:19:30.940 INFO    AlarmMessagesDataProvider InitialData(). Count = 8. ExecTime = 37,71 ms
+2016-03-01 12:19:30.940 DEBUG   AlarmLimitIdDataProvider  ProcessData(CC_Alg_Analogvar). Count = 0. ExecTime = 1,22 ms
+2016-03-01 12:19:30.940 INFO    AlarmLimitIdDataProvider  InitialData(). Count = 0. ExecTime = 9,57 ms
+2016-03-01 12:19:30.956 DEBUG   AlarmLimitDataProvider    ProcessData(CC_Alg_AnalogLimit). Count = 0. ExecTime = 2,68 ms
+2016-03-01 12:19:30.956 INFO    AlarmLimitDataProvider    InitialData(). Count = 0. ExecTime = 12,20 ms
+2016-03-01 12:19:30.956 DEBUG   AlarmClassDataProvider    ProcessData(MSClass). Count = 3. ExecTime = 2,36 ms
+2016-03-01 12:19:30.972 INFO    AlarmClassDataProvider    InitialData(). Count = 3. ExecTime = 9,31 ms
+2016-03-01 12:19:30.972 DEBUG   AlarmMsgTypeDataProvider  ProcessData(MSType). Count = 7. ExecTime = 4,38 ms
+2016-03-01 12:19:30.972 INFO    AlarmMsgTypeDataProvider  InitialData(). Count = 7. ExecTime = 12,99 ms
+2016-03-01 12:19:30.987 DEBUG   AlarmMsgGroupDataProvider ProcessData(MSMsgGroup). Count = 10. ExecTime = 2,57 ms
+2016-03-01 12:19:30.987 INFO    AlarmMsgGroupDataProvider InitialData(). Count = 10. ExecTime = 11,12 ms
+2016-03-01 12:19:31.003 DEBUG   AlarmMsgBlockDataProvider ProcessData(MSBlock). Count = 40. ExecTime = 2,21 ms
+2016-03-01 12:19:31.003 INFO    AlarmMsgBlockDataProvider InitialData(). Count = 40. ExecTime = 14,30 ms
+2016-03-01 12:19:31.518 DEBUG   TlgArchiveDataProvider    ProcessData(PDE#ARCHIVES). Count = 4. ExecTime = 4,84 ms
+2016-03-01 12:19:31.533 INFO    TlgArchiveDataProvider    InitialData(). Count = 4. ExecTime = 18,60 ms
+2016-03-01 12:19:31.549 DEBUG   TlgProcessTagDataProvider ProcessData(PDE#TAGS). Count = 4. ExecTime = 8,04 ms
+2016-03-01 12:19:31.549 INFO    TlgProcessTagDataProvider InitialData(). Count = 4. ExecTime = 21,97 ms
+2016-03-01 12:19:32.064 DEBUG   UserArchiveDataProvider   ProcessData(UA#Archive). Count = 0. ExecTime = 2,05 ms
+2016-03-01 12:19:32.079 INFO    UserArchiveDataProvider   InitialData(). Count = 0. ExecTime = 25,84 ms
+2016-03-01 12:19:32.095 DEBUG   UserArcFieldDataProvider  ProcessData(UA#Field). Count = 0. ExecTime = 3,31 ms
+2016-03-01 12:19:32.095 INFO    UserArcFieldDataProvider  InitialData(). Count = 0. ExecTime = 18,26 ms
+2016-03-01 12:19:32.110 DEBUG   UAViewDataProvider        ProcessData(UA#View). Count = 0. ExecTime = 1,66 ms
+2016-03-01 12:19:32.126 INFO    UAViewDataProvider        InitialData(). Count = 0. ExecTime = 22,60 ms
+2016-03-01 12:19:32.142 DEBUG   UAViewColumnsDataProvider ProcessData(UA#ViewCol). Count = 0. ExecTime = 2,15 ms
+2016-03-01 12:19:32.142 INFO    UAViewColumnsDataProvider InitialData(). Count = 0. ExecTime = 16,30 ms
+2016-03-01 12:19:32.656 DEBUG   HornTagDataProvider       ProcessData(HornTags). Count = 0. ExecTime = 1,57 ms
+2016-03-01 12:19:32.656 INFO    HornTagDataProvider       InitialData(). Count = 0. ExecTime = 11,98 ms
+2016-03-01 12:19:32.672 DEBUG   HornSignalTagDataProvider ProcessData(HornSignals). Count = 0. ExecTime = 1,28 ms
+2016-03-01 12:19:32.672 INFO    HornSignalTagDataProvider InitialData(). Count = 0. ExecTime = 9,96 ms
+2016-03-01 12:19:32.672 DEBUG   HornResetTagDataProvider  ProcessData(HornAdditionalResetTags). Count = 0. ExecTime = 1,13 ms
+2016-03-01 12:19:32.688 INFO    HornResetTagDataProvider  InitialData(). Count = 0. ExecTime = 10,85 ms
+2016-03-01 12:19:33.858 DEBUG   GlobalScript              Scanning file: acknowledgemessage.fct
+2016-03-01 12:19:33.904 DEBUG   GlobalScript              Scanning file: AXC_SetFilter.fct
+2016-03-01 12:19:33.904 DEBUG   GlobalScript              Scanning file: GCreateMyOperationMsg.fct
+2016-03-01 12:19:33.936 DEBUG   GlobalScript              Scanning file: gmsgfunc.fct
+2016-03-01 12:19:33.936 DEBUG   GlobalScript              Scanning file: PCS7_ChangeView.fct
+2016-03-01 12:19:33.936 DEBUG   GlobalScript              Scanning file: PCS7_CheckPermission.fct
+2016-03-01 12:19:33.951 DEBUG   GlobalScript              Scanning file: PCS7_OpenAnalogInput.Fct
+2016-03-01 12:19:33.951 DEBUG   GlobalScript              Scanning file: PCS7_OpenBinaryInput.Fct
+2016-03-01 12:19:33.967 DEBUG   GlobalScript              Scanning file: PCS7_OpenGroupDisplay.Fct
+2016-03-01 12:19:33.967 DEBUG   GlobalScript              Scanning file: PCS7_OpenLoopDisplay.Fct
+2016-03-01 12:19:33.967 DEBUG   GlobalScript              Scanning file: PCS7_OperationLog.fct
+2016-03-01 12:19:33.982 DEBUG   GlobalScript              Scanning file: PCS7_SetTagBit.fct
+2016-03-01 12:19:33.982 DEBUG   GlobalScript              Scanning file: PCS7_UpdateBarDown.Fct
+2016-03-01 12:19:33.998 DEBUG   GlobalScript              Scanning file: PCS7_UpdateBarLimits.Fct
+2016-03-01 12:19:33.998 DEBUG   GlobalScript              Scanning file: PCS7_UpdateBarLimitsUp.Fct
+2016-03-01 12:19:33.998 DEBUG   GlobalScript              Scanning file: PCS7_UpdateBarSPLimits.fct
+2016-03-01 12:19:34.014 DEBUG   GlobalScript              Scanning file: PCS7_UpdateBarStandard.Fct
+2016-03-01 12:19:34.014 DEBUG   GlobalScript              Scanning file: PCS7_UpdateBarUp.Fct
+2016-03-01 12:19:34.029 DEBUG   GlobalScript              Scanning file: PCS7_UpdateGroupPermission.Fct
+2016-03-01 12:19:34.029 DEBUG   GlobalScript              Scanning file: PCS7_UpdateGroupTagname.Fct
+2016-03-01 12:19:34.029 DEBUG   GlobalScript              Scanning file: PCS7_UpdateLoopPermission.Fct
+2016-03-01 12:19:34.045 DEBUG   GlobalScript              Scanning file: PCS7_UpdateLoopTagname.Fct
+2016-03-01 12:19:34.045 DEBUG   GlobalScript              Scanning file: PCS7_UpdateTagname.fct
+2016-03-01 12:19:34.060 DEBUG   GlobalScript              Scanning file: getlinkedvariable.fct
+2016-03-01 12:19:34.060 DEBUG   GlobalScript              Scanning file: getlocalpicture.fct
+2016-03-01 12:19:34.060 DEBUG   GlobalScript              Scanning file: getparentpicture.fct
+2016-03-01 12:19:34.060 DEBUG   GlobalScript              Scanning file: getparentpicturewindow.fct
+2016-03-01 12:19:34.076 DEBUG   GlobalScript              Scanning file: OpenPict.fct
+2016-03-01 12:19:34.076 DEBUG   GlobalScript              Scanning file: registry2.fct
+2016-03-01 12:19:34.092 DEBUG   GlobalScript              Scanning file: AXC_barclong.fct
+2016-03-01 12:19:34.092 DEBUG   GlobalScript              Scanning file: AXC_barcshor.fct
+2016-03-01 12:19:34.092 DEBUG   GlobalScript              Scanning file: AXC_bcomment.fct
+2016-03-01 12:19:34.092 DEBUG   GlobalScript              Scanning file: AXC_bemack.Fct
+2016-03-01 12:19:34.092 DEBUG   GlobalScript              Scanning file: AXC_bhide.fct
+2016-03-01 12:19:34.107 DEBUG   GlobalScript              Scanning file: AXC_bhidedlg.fct
+2016-03-01 12:19:34.107 DEBUG   GlobalScript              Scanning file: axc_bhideunhidemsg.fct
+2016-03-01 12:19:34.107 DEBUG   GlobalScript              Scanning file: AXC_bhit.fct
+2016-03-01 12:19:34.107 DEBUG   GlobalScript              Scanning file: AXC_bhornack.fct
+2016-03-01 12:19:34.107 DEBUG   GlobalScript              Scanning file: AXC_binfo.fct
+2016-03-01 12:19:34.107 DEBUG   GlobalScript              Scanning file: AXC_blockwin.fct
+2016-03-01 12:19:34.123 DEBUG   GlobalScript              Scanning file: AXC_bloop.fct
+2016-03-01 12:19:34.123 DEBUG   GlobalScript              Scanning file: AXC_bmsgfirs.fct
+2016-03-01 12:19:34.123 DEBUG   GlobalScript              Scanning file: AXC_bmsglas.fct
+2016-03-01 12:19:34.123 DEBUG   GlobalScript              Scanning file: AXC_bmsglockunlock.fct
+2016-03-01 12:19:34.123 DEBUG   GlobalScript              Scanning file: AXC_bmsgnex.fct
+2016-03-01 12:19:34.123 DEBUG   GlobalScript              Scanning file: AXC_bmsgprev.fct
+2016-03-01 12:19:34.138 DEBUG   GlobalScript              Scanning file: AXC_bmsgwin.fct
+2016-03-01 12:19:34.138 DEBUG   GlobalScript              Scanning file: AXC_bprint.fct
+2016-03-01 12:19:34.138 DEBUG   GlobalScript              Scanning file: AXC_bProtocol.fct
+2016-03-01 12:19:34.138 DEBUG   GlobalScript              Scanning file: AXC_bscroll.fct
+2016-03-01 12:19:34.138 DEBUG   GlobalScript              Scanning file: AXC_bselect.fct
+2016-03-01 12:19:34.138 DEBUG   GlobalScript              Scanning file: AXC_bsinack.fct
+2016-03-01 12:19:34.154 DEBUG   GlobalScript              Scanning file: AXC_bSortDlg.fct
+2016-03-01 12:19:34.154 DEBUG   GlobalScript              Scanning file: AXC_bTimeBase.fct
+2016-03-01 12:19:34.154 DEBUG   GlobalScript              Scanning file: AXC_bvisack.fct
+2016-03-01 12:19:34.154 DEBUG   GlobalScript              Scanning file: AXC_b_lock.fct
+2016-03-01 12:19:34.154 DEBUG   GlobalScript              Scanning file: barclong.fct
+2016-03-01 12:19:34.154 DEBUG   GlobalScript              Scanning file: barcshor.fct
+2016-03-01 12:19:34.154 DEBUG   GlobalScript              Scanning file: bcomment.fct
+2016-03-01 12:19:34.170 DEBUG   GlobalScript              Scanning file: bemack.Fct
+2016-03-01 12:19:34.170 DEBUG   GlobalScript              Scanning file: bhornack.fct
+2016-03-01 12:19:34.170 DEBUG   GlobalScript              Scanning file: binfo.fct
+2016-03-01 12:19:34.170 DEBUG   GlobalScript              Scanning file: blang.fct
+2016-03-01 12:19:34.170 DEBUG   GlobalScript              Scanning file: bloop.fct
+2016-03-01 12:19:34.170 DEBUG   GlobalScript              Scanning file: bmsgfirs.fct
+2016-03-01 12:19:34.185 DEBUG   GlobalScript              Scanning file: bmsglas.fct
+2016-03-01 12:19:34.185 DEBUG   GlobalScript              Scanning file: bmsgnex.fct
+2016-03-01 12:19:34.185 DEBUG   GlobalScript              Scanning file: bmsgprev.fct
+2016-03-01 12:19:34.185 DEBUG   GlobalScript              Scanning file: bmsgwin.fct
+2016-03-01 12:19:34.185 DEBUG   GlobalScript              Scanning file: bprint.fct
+2016-03-01 12:19:34.185 DEBUG   GlobalScript              Scanning file: bscroll.fct
+2016-03-01 12:19:34.185 DEBUG   GlobalScript              Scanning file: bselect.fct
+2016-03-01 12:19:34.201 DEBUG   GlobalScript              Scanning file: bsinack.fct
+2016-03-01 12:19:34.201 DEBUG   GlobalScript              Scanning file: bvisack.fct
+2016-03-01 12:19:34.201 DEBUG   GlobalScript              Scanning file: b_lock.fct
+2016-03-01 12:19:34.201 DEBUG   GlobalScript              Scanning file: trendtoolbarbutton.fct
+2016-03-01 12:19:34.201 DEBUG   GlobalScript              Scanning file: ReportJob.fct
+2016-03-01 12:19:34.216 DEBUG   GlobalScript              Scanning file: TlgTrendWindowActivateCurve.fct
+2016-03-01 12:19:34.216 DEBUG   GlobalScript              Scanning file: TlgGetColumnPosition.Fct
+2016-03-01 12:19:34.216 DEBUG   GlobalScript              Scanning file: TlgGetNumberOfColumns.Fct
+2016-03-01 12:19:34.216 DEBUG   GlobalScript              Scanning file: TlgGetNumberOfRows.Fct
+2016-03-01 12:19:34.232 DEBUG   GlobalScript              Scanning file: TlgGetNumberOfTrends.Fct
+2016-03-01 12:19:34.232 DEBUG   GlobalScript              Scanning file: TlgGetRowPosition.Fct
+2016-03-01 12:19:34.232 DEBUG   GlobalScript              Scanning file: TlgGetRulerArchivNameTrend.Fct
+2016-03-01 12:19:34.232 DEBUG   GlobalScript              Scanning file: TlgGetRulerTimeTrend.Fct
+2016-03-01 12:19:34.248 DEBUG   GlobalScript              Scanning file: TlgGetRulerValueTrend.Fct
+2016-03-01 12:19:34.248 DEBUG   GlobalScript              Scanning file: TlgGetRulerVariableNameTrend.Fct
+2016-03-01 12:19:34.248 DEBUG   GlobalScript              Scanning file: TlgGetTextAtPos.Fct
+2016-03-01 12:19:34.263 DEBUG   GlobalScript              Scanning file: TlgTableWindowPressEditRecordButton.fct
+2016-03-01 12:19:34.263 DEBUG   GlobalScript              Scanning file: TlgTableWindowPressFirstButton.fct
+2016-03-01 12:19:34.263 DEBUG   GlobalScript              Scanning file: TlgTableWindowPressHelpButton.fct
+2016-03-01 12:19:34.263 DEBUG   GlobalScript              Scanning file: TlgTableWindowPressLastButton.fct
+2016-03-01 12:19:34.263 DEBUG   GlobalScript              Scanning file: tlgtablewindowpressnextbutton.fct
+2016-03-01 12:19:34.279 DEBUG   GlobalScript              Scanning file: tlgTablewindowpressnextitembutton.fct
+2016-03-01 12:19:34.279 DEBUG   GlobalScript              Scanning file: tlgTablewindowpressopenarchivevariableselectiondlgbutton.fct
+2016-03-01 12:19:34.279 DEBUG   GlobalScript              Scanning file: TlgTableWindowPressOpenDlgButton.fct
+2016-03-01 12:19:34.279 DEBUG   GlobalScript              Scanning file: tlgTablewindowpressopenitemselectdlgbutton.fct
+2016-03-01 12:19:34.279 DEBUG   GlobalScript              Scanning file: TlgTableWindowPressOpenTimeSelectDlgButton.Fct
+2016-03-01 12:19:34.294 DEBUG   GlobalScript              Scanning file: TlgTableWindowPressPrevButton.fct
+2016-03-01 12:19:34.294 DEBUG   GlobalScript              Scanning file: TlgTableWindowPressPrevItemButton.Fct
+2016-03-01 12:19:34.294 DEBUG   GlobalScript              Scanning file: TlgTableWindowPressPrintButton.fct
+2016-03-01 12:19:34.294 DEBUG   GlobalScript              Scanning file: TlgTableWindowPressStartStopButton.fct
+2016-03-01 12:19:34.294 DEBUG   GlobalScript              Scanning file: TlgTableWindowPressStatsResultButton.fct
+2016-03-01 12:19:34.310 DEBUG   GlobalScript              Scanning file: TlgTableWindowPressStatsSelectRangeButton.fct
+2016-03-01 12:19:34.310 DEBUG   GlobalScript              Scanning file: TlgTrendWindowPressFirstButton.fct
+2016-03-01 12:19:34.310 DEBUG   GlobalScript              Scanning file: TlgTrendWindowPressHelpButton.fct
+2016-03-01 12:19:34.310 DEBUG   GlobalScript              Scanning file: TlgTrendWindowPressLastButton.fct
+2016-03-01 12:19:34.310 DEBUG   GlobalScript              Scanning file: TlgTrendWindowPressLinealButton.fct
+2016-03-01 12:19:34.326 DEBUG   GlobalScript              Scanning file: TlgTrendWindowPressNextButton.fct
+2016-03-01 12:19:34.326 DEBUG   GlobalScript              Scanning file: tlgtrendwindowpressnextitembutton.fct
+2016-03-01 12:19:34.326 DEBUG   GlobalScript              Scanning file: TlgTrendWindowPressOneToOneButton.fct
+2016-03-01 12:19:34.326 DEBUG   GlobalScript              Scanning file: tlgtrendwindowpressopenarchivevariableselectiondlgbutton.fct
+2016-03-01 12:19:34.326 DEBUG   GlobalScript              Scanning file: TLGTrendWindowPressOpenDlgButton.fct
+2016-03-01 12:19:34.341 DEBUG   GlobalScript              Scanning file: tlgtrendwindowpressopenitemselectdlgbutton.fct
+2016-03-01 12:19:34.341 DEBUG   GlobalScript              Scanning file: tlgtrendwindowpressopentimeselectdlgbutton.fct
+2016-03-01 12:19:34.341 DEBUG   GlobalScript              Scanning file: TlgTrendWindowPressPrevButton.fct
+2016-03-01 12:19:34.341 DEBUG   GlobalScript              Scanning file: tlgtrendwindowpressprevitembutton.fct
+2016-03-01 12:19:34.357 DEBUG   GlobalScript              Scanning file: TlgTrendWindowPressPrintButton.fct
+2016-03-01 12:19:34.357 DEBUG   GlobalScript              Scanning file: TlgTrendWindowPressReportSaveButton.fct
+2016-03-01 12:19:34.357 DEBUG   GlobalScript              Scanning file: TlgTrendWindowPressStartStopButton.fct
+2016-03-01 12:19:34.357 DEBUG   GlobalScript              Scanning file: TlgTrendWindowPressStatsResultButton.fct
+2016-03-01 12:19:34.357 DEBUG   GlobalScript              Scanning file: TlgTrendWindowPressStatsSelectRangeButton.fct
+2016-03-01 12:19:34.372 DEBUG   GlobalScript              Scanning file: TlgTrendWindowPressZoomInButton.fct
+2016-03-01 12:19:34.372 DEBUG   GlobalScript              Scanning file: TlgTrendWindowPressZoomOutButton.fct
+2016-03-01 12:19:34.372 DEBUG   GlobalScript              Scanning file: tlgaddrecord.fct
+2016-03-01 12:19:34.372 DEBUG   GlobalScript              Scanning file: tlgconnecttoarchiv.fct
+2016-03-01 12:19:34.388 DEBUG   GlobalScript              Scanning file: TlgDeleteRecord.fct
+2016-03-01 12:19:34.388 DEBUG   GlobalScript              Scanning file: tlgdisconnect.fct
+2016-03-01 12:19:34.388 DEBUG   GlobalScript              Scanning file: tlgfirstrecord.fct
+2016-03-01 12:19:34.388 DEBUG   GlobalScript              Scanning file: tlggetrecord.fct
+2016-03-01 12:19:34.388 DEBUG   GlobalScript              Scanning file: tlggetrecordfieldbynumber.fct
+2016-03-01 12:19:34.404 DEBUG   GlobalScript              Scanning file: tlggetuserfielddataastext.fct
+2016-03-01 12:19:34.404 DEBUG   GlobalScript              Scanning file: tlgisconnected.fct
+2016-03-01 12:19:34.404 DEBUG   GlobalScript              Scanning file: tlgisrecord.fct
+2016-03-01 12:19:34.419 DEBUG   GlobalScript              Scanning file: tlglastrecord.fct
+2016-03-01 12:19:34.419 DEBUG   GlobalScript              Scanning file: tlgnextrecord.fct
+2016-03-01 12:19:34.419 DEBUG   GlobalScript              Scanning file: tlgprevrecord.fct
+2016-03-01 12:19:34.419 DEBUG   GlobalScript              Scanning file: tlgreleaseconnection.fct
+2016-03-01 12:19:34.419 DEBUG   GlobalScript              Scanning file: tlgsetrecordfieldbynumber.fct
+2016-03-01 12:19:34.435 DEBUG   GlobalScript              Scanning file: tlgsetuserfielddataastext.fct
+2016-03-01 12:19:34.435 DEBUG   GlobalScript              Scanning file: tlgupdaterecord.fct
+2016-03-01 12:19:34.435 DEBUG   GlobalScript              Scanning file: getlocaltimestring.fct
+2016-03-01 12:19:34.435 DEBUG   GlobalScript              Scanning file: tlgusarchaddnewrecord.fct
+2016-03-01 12:19:34.450 DEBUG   GlobalScript              Scanning file: tlgusarchcheckrecordinarchiv.fct
+2016-03-01 12:19:34.450 DEBUG   GlobalScript              Scanning file: tlgusarchclose.fct
+2016-03-01 12:19:34.450 DEBUG   GlobalScript              Scanning file: tlgusarchcreatetransferlists.fct
+2016-03-01 12:19:34.466 DEBUG   GlobalScript              Scanning file: tlgusarchdiagnosticrecbuffields.fct
+2016-03-01 12:19:34.466 DEBUG   GlobalScript              Scanning file: tlgusarchenumfields.fct
+2016-03-01 12:19:34.482 DEBUG   GlobalScript              Scanning file: tlgusarchenumfieldscallback.fct
+2016-03-01 12:19:34.482 DEBUG   GlobalScript              Scanning file: tlgusarchloadfirstrecord.fct
+2016-03-01 12:19:34.482 DEBUG   GlobalScript              Scanning file: tlgusarchloadlastrecord.fct
+2016-03-01 12:19:34.482 DEBUG   GlobalScript              Scanning file: tlgusarchloadnextrecord.fct
+2016-03-01 12:19:34.497 DEBUG   GlobalScript              Scanning file: tlgusarchloadprevrecord.fct
+2016-03-01 12:19:34.513 DEBUG   GlobalScript              Scanning file: tlgusarchloadrecord.fct
+2016-03-01 12:19:34.513 DEBUG   GlobalScript              Scanning file: tlgusarchopen.fct
+2016-03-01 12:19:34.528 DEBUG   GlobalScript              Scanning file: tlgusarchprinttransferlists.fct
+2016-03-01 12:19:34.528 DEBUG   GlobalScript              Scanning file: tlgusarchreadrecbuffieldfromtag.fct
+2016-03-01 12:19:34.528 DEBUG   GlobalScript              Scanning file: tlgusarchreadrecbuffieldsfromtags.fct
+2016-03-01 12:19:34.544 DEBUG   GlobalScript              Scanning file: tlgusarchreadrecordfromprocessif.fct
+2016-03-01 12:19:34.544 DEBUG   GlobalScript              Scanning file: tlgusarchstorerecordto.fct
+2016-03-01 12:19:34.544 DEBUG   GlobalScript              Scanning file: tlgusarchupdaterecord.fct
+2016-03-01 12:19:34.560 DEBUG   GlobalScript              Scanning file: tlgusarchwriterecbuffieldstotags.fct
+2016-03-01 12:19:34.560 DEBUG   GlobalScript              Scanning file: tlgusarchwriterecbuffieldtotag.fct
+2016-03-01 12:19:34.560 DEBUG   GlobalScript              Scanning file: tlgusarchwriterecordtoprocessif.fct
+2016-03-01 12:19:34.560 DEBUG   GlobalScript              Scanning file: GetCSPic.Fct
+2016-03-01 12:19:34.575 DEBUG   GlobalScript              Scanning file: GetSignificantMask.fct
+2016-03-01 12:19:34.575 DEBUG   GlobalScript              Scanning file: PASSCHAREA.fct
+2016-03-01 12:19:34.591 DEBUG   GlobalScript              Scanning file: passchlevel.fct
+2016-03-01 12:19:34.591 DEBUG   GlobalScript              Scanning file: passchlevelaerea.fct
+2016-03-01 12:19:34.591 DEBUG   GlobalScript              Scanning file: PASSLOGIN.FCT
+2016-03-01 12:19:34.591 DEBUG   GlobalScript              Scanning file: sfcopen.fct
+2016-03-01 12:19:34.591 DEBUG   GlobalScript              Scanning file: RptJobPreview.fct
+2016-03-01 12:19:34.606 DEBUG   GlobalScript              Scanning file: RptJobPrint.fct
+2016-03-01 12:19:34.606 DEBUG   GlobalScript              Scanning file: RptShowError.fct
+2016-03-01 12:19:34.622 DEBUG   GlobalScript              Scanning file: AckPict.fct
+2016-03-01 12:19:34.622 DEBUG   GlobalScript              Scanning file: ALGAcxAddPermissionFilter.fct
+2016-03-01 12:19:34.638 DEBUG   GlobalScript              Scanning file: ALGAcxAddPermissionFilterEx.fct
+2016-03-01 12:19:34.638 DEBUG   GlobalScript              Scanning file: ALGAcxAddPermissionFilterShow.fct
+2016-03-01 12:19:34.653 DEBUG   GlobalScript              Scanning file: ALGAcxAddPermissionFilterShowEx.fct
+2016-03-01 12:19:34.653 DEBUG   GlobalScript              Scanning file: CorrectMessageSQLFilter.fct
+2016-03-01 12:19:34.669 DEBUG   GlobalScript              Scanning file: CSigRTExit.Fct
+2016-03-01 12:19:34.669 DEBUG   GlobalScript              Scanning file: DisplayServerStates.fct
+2016-03-01 12:19:34.684 DEBUG   GlobalScript              Scanning file: ExtractPrefix.fct
+2016-03-01 12:19:34.700 DEBUG   GlobalScript              Scanning file: GetAreaPermissionSQLString.fct
+2016-03-01 12:19:34.700 DEBUG   GlobalScript              Scanning file: GetAreaPermissionSQLStringEx.fct
+2016-03-01 12:19:34.716 DEBUG   GlobalScript              Scanning file: GetAreaPermissionSQLStringShow.fct
+2016-03-01 12:19:34.731 DEBUG   GlobalScript              Scanning file: GetASVaI.Fct
+2016-03-01 12:19:34.731 DEBUG   GlobalScript              Scanning file: GetIFrM.Fct
+2016-03-01 12:19:34.747 DEBUG   GlobalScript              Scanning file: getmcvar.Fct
+2016-03-01 12:19:34.762 DEBUG   GlobalScript              Scanning file: GetPict.fct
+2016-03-01 12:19:34.762 DEBUG   GlobalScript              Scanning file: GetPictObj.fct
+2016-03-01 12:19:34.778 DEBUG   GlobalScript              Scanning file: LockAreaMessages.fct
+2016-03-01 12:19:34.778 DEBUG   GlobalScript              Scanning file: LockAreaMessagesWithDetails.fct
+2016-03-01 12:19:34.778 DEBUG   GlobalScript              Scanning file: LoCuFiel.Fct
+2016-03-01 12:19:34.794 DEBUG   GlobalScript              Scanning file: LoopInAl.Fct
+2016-03-01 12:19:34.809 DEBUG   GlobalScript              Scanning file: OpenSFCFaceplate.fct
+2016-03-01 12:19:34.809 DEBUG   GlobalScript              Scanning file: PrintJobAsync.Fct
+2016-03-01 12:19:34.809 DEBUG   GlobalScript              Scanning file: profile.fct
+2016-03-01 12:19:34.825 DEBUG   GlobalScript              Scanning file: ptmunld.Fct
+2016-03-01 12:19:34.825 DEBUG   GlobalScript              Scanning file: PTN_CSIG_LDown.fct
+2016-03-01 12:19:34.825 DEBUG   GlobalScript              Scanning file: PTN_CSIG_LDownEx.fct
+2016-03-01 12:19:34.825 DEBUG   GlobalScript              Scanning file: PTN_CSIG_RDown.fct
+2016-03-01 12:19:34.840 DEBUG   GlobalScript              Scanning file: PTN_CSIG_RUp.fct
+2016-03-01 12:19:34.840 DEBUG   GlobalScript              Scanning file: PTN_Node_LDown.fct
+2016-03-01 12:19:34.840 DEBUG   GlobalScript              Scanning file: PTN_Node_RDown.fct
+2016-03-01 12:19:34.840 DEBUG   GlobalScript              Scanning file: PTN_OpenPath.fct
+2016-03-01 12:19:34.856 DEBUG   GlobalScript              Scanning file: PTN_Pict_Change.fct
+2016-03-01 12:19:34.856 DEBUG   GlobalScript              Scanning file: PTN_PICT_LDown.fct
+2016-03-01 12:19:34.872 DEBUG   GlobalScript              Scanning file: RemovePrefix.fct
+2016-03-01 12:19:34.872 DEBUG   GlobalScript              Scanning file: reset_hoer.Fct
+2016-03-01 12:19:34.872 DEBUG   GlobalScript              Scanning file: SetAlarmControlWidth.fct
+2016-03-01 12:19:34.903 DEBUG   GlobalScript              Scanning file: SetASVaI.Fct
+2016-03-01 12:19:34.918 DEBUG   GlobalScript              Scanning file: SetMCVar.Fct
+2016-03-01 12:19:34.918 DEBUG   GlobalScript              Scanning file: SFCDoLoopInAlarm.fct
+2016-03-01 12:19:34.934 DEBUG   GlobalScript              Scanning file: SFCDoOpenFaceplate.fct
+2016-03-01 12:19:34.950 DEBUG   GlobalScript              Scanning file: SFCLpIAl.Fct
+2016-03-01 12:19:34.950 DEBUG   GlobalScript              Scanning file: SFCLpIEdc.Fct
+2016-03-01 12:19:34.950 DEBUG   GlobalScript              Scanning file: SFCOpenOverview.fct
+2016-03-01 12:19:34.965 DEBUG   GlobalScript              Scanning file: SFCOpenSection.fct
+2016-03-01 12:19:34.965 DEBUG   GlobalScript              Scanning file: SSMAssetSetIconState.fct
+2016-03-01 12:19:34.965 DEBUG   GlobalScript              Scanning file: SSMAssetShowSumDisp.fct
+2016-03-01 12:19:34.981 DEBUG   GlobalScript              Scanning file: SSMcgbtn.fct
+2016-03-01 12:19:34.996 DEBUG   GlobalScript              Scanning file: SSMcgov.fct
+2016-03-01 12:19:34.996 DEBUG   GlobalScript              Scanning file: SSMCgWk.fct
+2016-03-01 12:19:35.012 DEBUG   GlobalScript              Scanning file: SSMChangeLanguage.fct
+2016-03-01 12:19:35.012 DEBUG   GlobalScript              Scanning file: SSMChdwn.fct
+2016-03-01 12:19:35.012 DEBUG   GlobalScript              Scanning file: SSMCheckAreaLevelPermission.fct
+2016-03-01 12:19:35.012 DEBUG   GlobalScript              Scanning file: SSMChLft.fct
+2016-03-01 12:19:35.028 DEBUG   GlobalScript              Scanning file: SSMChooseLanguage.fct
+2016-03-01 12:19:35.028 DEBUG   GlobalScript              Scanning file: SSMChRgt.fct
+2016-03-01 12:19:35.028 DEBUG   GlobalScript              Scanning file: SSMChTop.fct
+2016-03-01 12:19:35.028 DEBUG   GlobalScript              Scanning file: SSMDeleteSettings.fct
+2016-03-01 12:19:35.043 DEBUG   GlobalScript              Scanning file: SSMDelSe.Fct
+2016-03-01 12:19:35.043 DEBUG   GlobalScript              Scanning file: SSMDown.fct
+2016-03-01 12:19:35.043 DEBUG   GlobalScript              Scanning file: SSMGArPa.Fct
+2016-03-01 12:19:35.059 DEBUG   GlobalScript              Scanning file: SSMGetAreaFromIndex.Fct
+2016-03-01 12:19:35.059 DEBUG   GlobalScript              Scanning file: SSMGetAreaFromWorkField.Fct
+2016-03-01 12:19:35.059 DEBUG   GlobalScript              Scanning file: SSMGetButtonColor.fct
+2016-03-01 12:19:35.074 DEBUG   GlobalScript              Scanning file: ssmgetco.Fct
+2016-03-01 12:19:35.090 DEBUG   GlobalScript              Scanning file: SSMGetContainerIDToPicture.fct
+2016-03-01 12:19:35.090 DEBUG   GlobalScript              Scanning file: SSMGetCP.fct
+2016-03-01 12:19:35.090 DEBUG   GlobalScript              Scanning file: SSMGetCt.fct
+2016-03-01 12:19:35.106 DEBUG   GlobalScript              Scanning file: SSMGetIndexFromObject.fct
+2016-03-01 12:19:35.106 DEBUG   GlobalScript              Scanning file: SSMGetIndexObjectName.fct
+2016-03-01 12:19:35.106 DEBUG   GlobalScript              Scanning file: SSMGetLanguageIndex.fct
+2016-03-01 12:19:35.106 DEBUG   GlobalScript              Scanning file: SSMGetLanguageIndexEx.fct
+2016-03-01 12:19:35.121 DEBUG   GlobalScript              Scanning file: SSMGetRegistryString.fct
+2016-03-01 12:19:35.121 DEBUG   GlobalScript              Scanning file: SSMGetRt.fct
+2016-03-01 12:19:35.137 DEBUG   GlobalScript              Scanning file: SSMGetSAPictureAndObjectNameEx.fct
+2016-03-01 12:19:35.137 DEBUG   GlobalScript              Scanning file: SSMGetSAPictureName.fct
+2016-03-01 12:19:35.137 DEBUG   GlobalScript              Scanning file: SSMGetSAPictureNameEx.fct
+2016-03-01 12:19:35.152 DEBUG   GlobalScript              Scanning file: SSMGetSc.fct
+2016-03-01 12:19:35.152 DEBUG   GlobalScript              Scanning file: SSMGetServer.fct
+2016-03-01 12:19:35.168 DEBUG   GlobalScript              Scanning file: SSMGetServerEx.fct
+2016-03-01 12:19:35.184 DEBUG   GlobalScript              Scanning file: SSMGetWP.fct
+2016-03-01 12:19:35.184 DEBUG   GlobalScript              Scanning file: ssmgtaut.Fct
+2016-03-01 12:19:35.199 DEBUG   GlobalScript              Scanning file: SSMGtWkF.Fct
+2016-03-01 12:19:35.199 DEBUG   GlobalScript              Scanning file: ssmgwpa.Fct
+2016-03-01 12:19:35.199 DEBUG   GlobalScript              Scanning file: SSMHardCopy.fct
+2016-03-01 12:19:35.215 DEBUG   GlobalScript              Scanning file: SSMIsTopAttachedToWorkField.fct
+2016-03-01 12:19:35.215 DEBUG   GlobalScript              Scanning file: SSMIsUserNameEnable.fct
+2016-03-01 12:19:35.215 DEBUG   GlobalScript              Scanning file: SSMIsVariableValid.fct
+2016-03-01 12:19:35.230 DEBUG   GlobalScript              Scanning file: SSMLdSet.Fct
+2016-03-01 12:19:35.230 DEBUG   GlobalScript              Scanning file: SSMLeft.fct
+2016-03-01 12:19:35.230 DEBUG   GlobalScript              Scanning file: SSMLinkCSIG.fct
+2016-03-01 12:19:35.246 DEBUG   GlobalScript              Scanning file: SSMLngSetVisibleIfInstalled.fct
+2016-03-01 12:19:35.246 DEBUG   GlobalScript              Scanning file: SSMMCActualButton.fct
+2016-03-01 12:19:35.262 DEBUG   GlobalScript              Scanning file: SSMMCActualButtonEx.fct
+2016-03-01 12:19:35.277 DEBUG   GlobalScript              Scanning file: SSMMCCalcCSIG.fct
+2016-03-01 12:19:35.277 DEBUG   GlobalScript              Scanning file: SSMMCCalcCSIGEx.fct
+2016-03-01 12:19:35.277 DEBUG   GlobalScript              Scanning file: SSMMCChangeArea.fct
+2016-03-01 12:19:35.293 DEBUG   GlobalScript              Scanning file: SSMMCChangeAreaEx.fct
+2016-03-01 12:19:35.293 DEBUG   GlobalScript              Scanning file: SSMMCChangeServer.fct
+2016-03-01 12:19:35.308 DEBUG   GlobalScript              Scanning file: SSMMCShowTree.fct
+2016-03-01 12:19:35.308 DEBUG   GlobalScript              Scanning file: SSMMCShowTreeEx.fct
+2016-03-01 12:19:35.308 DEBUG   GlobalScript              Scanning file: SSMopenfaceplate.fct
+2016-03-01 12:19:35.324 DEBUG   GlobalScript              Scanning file: SSMOpenSecuredHelp.fct
+2016-03-01 12:19:35.324 DEBUG   GlobalScript              Scanning file: SSMOpenTrendOnlDialog.fct
+2016-03-01 12:19:35.324 DEBUG   GlobalScript              Scanning file: SSMOpSec.fct
+2016-03-01 12:19:35.340 DEBUG   GlobalScript              Scanning file: SSMOpTop.fct
+2016-03-01 12:19:35.340 DEBUG   GlobalScript              Scanning file: SSMOpTpS.Fct
+2016-03-01 12:19:35.340 DEBUG   GlobalScript              Scanning file: SSMOVButtonSelect.fct
+2016-03-01 12:19:35.355 DEBUG   GlobalScript              Scanning file: ssmpcgt.fct
+2016-03-01 12:19:35.355 DEBUG   GlobalScript              Scanning file: ssmpcnu.fct
+2016-03-01 12:19:35.371 DEBUG   GlobalScript              Scanning file: ssmpcst.fct
+2016-03-01 12:19:35.371 DEBUG   GlobalScript              Scanning file: ssmpexec.fct
+2016-03-01 12:19:35.371 DEBUG   GlobalScript              Scanning file: ssmpmin.fct
+2016-03-01 12:19:35.386 DEBUG   GlobalScript              Scanning file: ssmpminex.fct
+2016-03-01 12:19:35.386 DEBUG   GlobalScript              Scanning file: ssmpmlo.fct
+2016-03-01 12:19:35.402 DEBUG   GlobalScript              Scanning file: ssmpmmove.fct
+2016-03-01 12:19:35.402 DEBUG   GlobalScript              Scanning file: ssmpmnu.fct
+2016-03-01 12:19:35.402 DEBUG   GlobalScript              Scanning file: ssmpmnuex.fct
+2016-03-01 12:19:35.418 DEBUG   GlobalScript              Scanning file: ssmpmre.fct
+2016-03-01 12:19:35.418 DEBUG   GlobalScript              Scanning file: SSMProgramStart.fct
+2016-03-01 12:19:35.418 DEBUG   GlobalScript              Scanning file: SSMRefreshOneLine.fct
+2016-03-01 12:19:35.433 DEBUG   GlobalScript              Scanning file: SSMResetAlarmFilter.fct
+2016-03-01 12:19:35.433 DEBUG   GlobalScript              Scanning file: SSMRight.fct
+2016-03-01 12:19:35.433 DEBUG   GlobalScript              Scanning file: SSMScrollPictureToObject.fct
+2016-03-01 12:19:35.449 DEBUG   GlobalScript              Scanning file: SSMSetAr.fct
+2016-03-01 12:19:35.449 DEBUG   GlobalScript              Scanning file: SSMSetLg.Fct
+2016-03-01 12:19:35.449 DEBUG   GlobalScript              Scanning file: SSMShowAreaButton.fct
+2016-03-01 12:19:35.464 DEBUG   GlobalScript              Scanning file: SSMShowAreaButtonEx.fct
+2016-03-01 12:19:35.480 DEBUG   GlobalScript              Scanning file: SSMShowAreaText.fct
+2016-03-01 12:19:35.480 DEBUG   GlobalScript              Scanning file: SSMShowAreaTextMC.fct
+2016-03-01 12:19:35.480 DEBUG   GlobalScript              Scanning file: SSMShowAreaTextMCEx.fct
+2016-03-01 12:19:35.496 DEBUG   GlobalScript              Scanning file: SSMShowLanguage.fct
+2016-03-01 12:19:35.511 DEBUG   GlobalScript              Scanning file: SSMShowSubareaText.fct
+2016-03-01 12:19:35.511 DEBUG   GlobalScript              Scanning file: SSMShowTree.fct
+2016-03-01 12:19:35.527 DEBUG   GlobalScript              Scanning file: SSMShowTreeEx.fct
+2016-03-01 12:19:35.527 DEBUG   GlobalScript              Scanning file: SSMStartProcInAlAr.fct
+2016-03-01 12:19:35.542 DEBUG   GlobalScript              Scanning file: SSMStSet.Fct
+2016-03-01 12:19:35.542 DEBUG   GlobalScript              Scanning file: SSMTop.fct
+2016-03-01 12:19:35.558 DEBUG   GlobalScript              Scanning file: SSMTopAttachToWorkfield.fct
+2016-03-01 12:19:35.558 DEBUG   GlobalScript              Scanning file: SSMTopfieldVisCh.fct
+2016-03-01 12:19:35.558 DEBUG   GlobalScript              Scanning file: ssmunld.Fct
+2016-03-01 12:19:35.574 DEBUG   GlobalScript              Scanning file: stcufiel.Fct
+2016-03-01 12:19:35.574 DEBUG   GlobalScript              Scanning file: StoragePlusReportExport.fct
+2016-03-01 12:19:35.574 DEBUG   GlobalScript              Scanning file: StoragePlusReportExportEx.fct
+2016-03-01 12:19:35.589 DEBUG   GlobalScript              Scanning file: StoragePlusReportExportUTC.fct
+2016-03-01 12:19:35.589 DEBUG   GlobalScript              Scanning file: uaaddarchive.fct
+2016-03-01 12:19:35.589 DEBUG   GlobalScript              Scanning file: uaaddfield.fct
+2016-03-01 12:19:35.589 DEBUG   GlobalScript              Scanning file: UAArchiveClose.fct
+2016-03-01 12:19:35.589 DEBUG   GlobalScript              Scanning file: UAArchiveDelete.fct
+2016-03-01 12:19:35.605 DEBUG   GlobalScript              Scanning file: UAArchiveExport.fct
+2016-03-01 12:19:35.605 DEBUG   GlobalScript              Scanning file: UAArchiveGetCount.fct
+2016-03-01 12:19:35.605 DEBUG   GlobalScript              Scanning file: UAArchiveGetFieldLength.fct
+2016-03-01 12:19:35.605 DEBUG   GlobalScript              Scanning file: UAArchiveGetFieldName.fct
+2016-03-01 12:19:35.605 DEBUG   GlobalScript              Scanning file: UAArchiveGetFields.fct
+2016-03-01 12:19:35.620 DEBUG   GlobalScript              Scanning file: UAArchiveGetFieldType.fct
+2016-03-01 12:19:35.620 DEBUG   GlobalScript              Scanning file: UAArchiveGetFieldValueDate.fct
+2016-03-01 12:19:35.620 DEBUG   GlobalScript              Scanning file: UAArchiveGetFieldValueDouble.fct
+2016-03-01 12:19:35.620 DEBUG   GlobalScript              Scanning file: uaArchiveGetFieldValueFloat.fct
+2016-03-01 12:19:35.620 DEBUG   GlobalScript              Scanning file: UAArchiveGetFieldValueLong.fct
+2016-03-01 12:19:35.620 DEBUG   GlobalScript              Scanning file: UAArchiveGetFieldValueString.fct
+2016-03-01 12:19:35.636 DEBUG   GlobalScript              Scanning file: UAArchiveGetFilter.fct
+2016-03-01 12:19:35.636 DEBUG   GlobalScript              Scanning file: UAArchiveGetID.fct
+2016-03-01 12:19:35.636 DEBUG   GlobalScript              Scanning file: UAArchiveGetName.fct
+2016-03-01 12:19:35.636 DEBUG   GlobalScript              Scanning file: UAArchiveGetSort.fct
+2016-03-01 12:19:35.636 DEBUG   GlobalScript              Scanning file: UAArchiveImport.fct
+2016-03-01 12:19:35.652 DEBUG   GlobalScript              Scanning file: UAArchiveInsert.fct
+2016-03-01 12:19:35.652 DEBUG   GlobalScript              Scanning file: UAArchiveMoveFirst.fct
+2016-03-01 12:19:35.652 DEBUG   GlobalScript              Scanning file: UAArchiveMoveLast.fct
+2016-03-01 12:19:35.652 DEBUG   GlobalScript              Scanning file: UAArchiveMoveNext.fct
+2016-03-01 12:19:35.652 DEBUG   GlobalScript              Scanning file: UAArchiveMovePrevious.fct
+2016-03-01 12:19:35.667 DEBUG   GlobalScript              Scanning file: UAArchiveOpen.fct
+2016-03-01 12:19:35.667 DEBUG   GlobalScript              Scanning file: UAArchiveReadTagValues.fct
+2016-03-01 12:19:35.667 DEBUG   GlobalScript              Scanning file: UAArchiveReadTagValuesByName.fct
+2016-03-01 12:19:35.667 DEBUG   GlobalScript              Scanning file: UAArchiveRequery.fct
+2016-03-01 12:19:35.667 DEBUG   GlobalScript              Scanning file: UAArchiveSetFieldValueDate.fct
+2016-03-01 12:19:35.667 DEBUG   GlobalScript              Scanning file: UAArchiveSetFieldValueDouble.fct
+2016-03-01 12:19:35.683 DEBUG   GlobalScript              Scanning file: uaArchiveSetFieldValueFloat.fct
+2016-03-01 12:19:35.683 DEBUG   GlobalScript              Scanning file: UAArchiveSetFieldValueLong.fct
+2016-03-01 12:19:35.683 DEBUG   GlobalScript              Scanning file: UAArchiveSetFieldValueString.fct
+2016-03-01 12:19:35.683 DEBUG   GlobalScript              Scanning file: UAArchiveSetFilter.fct
+2016-03-01 12:19:35.683 DEBUG   GlobalScript              Scanning file: UAArchiveSetSort.fct
+2016-03-01 12:19:35.683 DEBUG   GlobalScript              Scanning file: UAArchiveUpdate.fct
+2016-03-01 12:19:35.683 DEBUG   GlobalScript              Scanning file: UAArchiveWriteTagValues.fct
+2016-03-01 12:19:35.698 DEBUG   GlobalScript              Scanning file: UAArchiveWriteTagValuesByName.fct
+2016-03-01 12:19:35.698 DEBUG   GlobalScript              Scanning file: UAConnect.fct
+2016-03-01 12:19:35.698 DEBUG   GlobalScript              Scanning file: UADisconnect.fct
+2016-03-01 12:19:35.698 DEBUG   GlobalScript              Scanning file: uagetarchive.fct
+2016-03-01 12:19:35.698 DEBUG   GlobalScript              Scanning file: uagetfield.fct
+2016-03-01 12:19:35.698 DEBUG   GlobalScript              Scanning file: UAGetLastError.fct
+2016-03-01 12:19:35.698 DEBUG   GlobalScript              Scanning file: UAGetlastHResult.fct
+2016-03-01 12:19:35.714 DEBUG   GlobalScript              Scanning file: uagetnumarchives.fct
+2016-03-01 12:19:35.714 DEBUG   GlobalScript              Scanning file: uagetnumfields.fct
+2016-03-01 12:19:35.714 DEBUG   GlobalScript              Scanning file: UAQueryArchive.fct
+2016-03-01 12:19:35.714 DEBUG   GlobalScript              Scanning file: UAQueryArchiveByName.fct
+2016-03-01 12:19:35.714 DEBUG   GlobalScript              Scanning file: uaqueryconfiguration.fct
+2016-03-01 12:19:35.714 DEBUG   GlobalScript              Scanning file: UAReleaseArchive.fct
+2016-03-01 12:19:35.714 DEBUG   GlobalScript              Scanning file: uareleaseconfiguration.fct
+2016-03-01 12:19:35.714 DEBUG   GlobalScript              Scanning file: uaremoveallarchives.fct
+2016-03-01 12:19:35.730 DEBUG   GlobalScript              Scanning file: uaremoveallfields.fct
+2016-03-01 12:19:35.730 DEBUG   GlobalScript              Scanning file: uaremovearchive.fct
+2016-03-01 12:19:35.730 DEBUG   GlobalScript              Scanning file: uaremovefield.fct
+2016-03-01 12:19:35.730 DEBUG   GlobalScript              Scanning file: uasetarchive.fct
+2016-03-01 12:19:35.730 DEBUG   GlobalScript              Scanning file: uasetfield.fct
+2016-03-01 12:19:35.730 DEBUG   GlobalScript              Scanning file: GetHWDiag.fct
+2016-03-01 12:19:35.745 DEBUG   GlobalScript              Scanning file: GetHWDiagLevel.fct
+2016-03-01 12:19:35.745 DEBUG   GlobalScript              Scanning file: GetKopFupAwl.fct
+2016-03-01 12:19:35.745 DEBUG   GlobalScript              Scanning file: GetKopFupAwlLevel.fct
+2016-03-01 12:19:35.745 DEBUG   GlobalScript              Scanning file: OnDeactivate.fct
+2016-03-01 12:19:35.745 DEBUG   GlobalScript              Scanning file: OnError.Fct
+2016-03-01 12:19:35.761 DEBUG   GlobalScript              Scanning file: ontime.fct
+2016-03-01 12:19:35.792 DEBUG   GlobalScript              Scanning file: Execute.fct
+2016-03-01 12:19:35.808 DEBUG   ReportProvider            Scanning file: @XREFPrintRef.RPL
+2016-03-01 12:19:35.886 DEBUG   ReportProvider            Scanning file: @XREFPRINTSRC.RPL
+2016-03-01 12:19:35.886 DEBUG   ReportProvider            Scanning file: @XREFPrintRef_DEU.RPL
+2016-03-01 12:19:35.886 DEBUG   ReportProvider            Scanning file: @XREFPRINTSRC_DEU.RPL
+2016-03-01 12:19:35.901 DEBUG   ReportProvider            Scanning file: @AKT_OBJ_ENU.RPL
+2016-03-01 12:19:35.901 DEBUG   ReportProvider            Scanning file: @akt_prop_ENU.rpl
+2016-03-01 12:19:35.901 DEBUG   ReportProvider            Scanning file: @Alarm Control - Picture_ENU.RPL
+2016-03-01 12:19:35.901 DEBUG   ReportProvider            Scanning file: @Alarm Control - Table_ENU.RPL
+2016-03-01 12:19:35.901 DEBUG   ReportProvider            Scanning file: @algcs(landscape)_ENU.rpl
+2016-03-01 12:19:35.917 DEBUG   ReportProvider            Scanning file: @algcs_ENU.rpl
+2016-03-01 12:19:35.917 DEBUG   ReportProvider            Scanning file: @alrtfoa_ENU.rpl
+2016-03-01 12:19:35.917 DEBUG   ReportProvider            Scanning file: @alrtmef_ENU.rpl
+2016-03-01 12:19:35.917 DEBUG   ReportProvider            Scanning file: @alrtuma_ENU.rpl
+2016-03-01 12:19:35.932 DEBUG   ReportProvider            Scanning file: @AssetFaceplate_ENU.RPL
+2016-03-01 12:19:35.932 DEBUG   ReportProvider            Scanning file: @CCAlarmCtrl-CP_ENU.RPL
+2016-03-01 12:19:35.932 DEBUG   ReportProvider            Scanning file: @CCAlgRtOnlineMessagesActive_ENU.RPL
+2016-03-01 12:19:35.932 DEBUG   ReportProvider            Scanning file: @CCAlgRtOnlineMessagesGone_ENU.RPL
+2016-03-01 12:19:35.932 DEBUG   ReportProvider            Scanning file: @CCAlgRtOnlineMessagesHidden_ENU.RPL
+2016-03-01 12:19:35.948 DEBUG   ReportProvider            Scanning file: @CCAlgRtOnlineMessagesHiding_ENU.RPL
+2016-03-01 12:19:35.948 DEBUG   ReportProvider            Scanning file: @CCAlgRtOnlineMessagesLocked_ENU.RPL
+2016-03-01 12:19:35.948 DEBUG   ReportProvider            Scanning file: @CCAlgRtOnlineMessagesNewWithTolerance_ENU.RPL
+2016-03-01 12:19:35.948 DEBUG   ReportProvider            Scanning file: @CCAlgRtOnlineMessagesNew_ENU.RPL
+2016-03-01 12:19:35.964 DEBUG   ReportProvider            Scanning file: @CCAlgRtOnlineMessagesOld_ENU.RPL
+2016-03-01 12:19:35.964 DEBUG   ReportProvider            Scanning file: @CCAlgRtOnlineMessages_ENU.RPL
+2016-03-01 12:19:35.964 DEBUG   ReportProvider            Scanning file: @CCAlgRTSequenceArchiveJournal_ENU.RPL
+2016-03-01 12:19:35.964 DEBUG   ReportProvider            Scanning file: @CCAlgRTSequenceArchiveOperation_ENU.RPL
+2016-03-01 12:19:35.979 DEBUG   ReportProvider            Scanning file: @CCAlgRTSequenceArchiveProcess_ENU.RPL
+2016-03-01 12:19:35.979 DEBUG   ReportProvider            Scanning file: @CCAlgRtSequenceArchive_ENU.RPL
+2016-03-01 12:19:35.979 DEBUG   ReportProvider            Scanning file: @CCAlgRtShortTermArchive_ENU.RPL
+2016-03-01 12:19:35.979 DEBUG   ReportProvider            Scanning file: @CCCurveControlContents_ENU.RPL
+2016-03-01 12:19:35.979 DEBUG   ReportProvider            Scanning file: @CCFunctionTrendCtrl-CP_ENU.RPL
+2016-03-01 12:19:35.995 DEBUG   ReportProvider            Scanning file: @CCOnlineTableCtrl-CP_ENU.RPL
+2016-03-01 12:19:35.995 DEBUG   ReportProvider            Scanning file: @CCOnlineTrendCtrl-Curves-CP_ENU.RPL
+2016-03-01 12:19:35.995 DEBUG   ReportProvider            Scanning file: @CCTableControlContents_ENU.RPL
+2016-03-01 12:19:35.995 DEBUG   ReportProvider            Scanning file: @CCTlgRtCurves_ENU.RPL
+2016-03-01 12:19:36.010 DEBUG   ReportProvider            Scanning file: @CCTlgRtTables_ENU.RPL
+2016-03-01 12:19:36.010 DEBUG   ReportProvider            Scanning file: @Control Center CS (compact)_ENU.rpl
+2016-03-01 12:19:36.010 DEBUG   ReportProvider            Scanning file: @Function Trend Control - Picture_ENU.RPL
+2016-03-01 12:19:36.010 DEBUG   ReportProvider            Scanning file: @Global Script single Action (landscape)_ENU.rpl
+2016-03-01 12:19:36.010 DEBUG   ReportProvider            Scanning file: @Global Script single Project Funtion (landscape)_ENU.rpl
+2016-03-01 12:19:36.026 DEBUG   ReportProvider            Scanning file: @Global Script single Standard Function (landscape)_ENU.rpl
+2016-03-01 12:19:36.026 DEBUG   ReportProvider            Scanning file: @gscract_ENU.rpl
+2016-03-01 12:19:36.026 DEBUG   ReportProvider            Scanning file: @gscrpfc_ENU.rpl
+2016-03-01 12:19:36.026 DEBUG   ReportProvider            Scanning file: @gscrsfc_ENU.rpl
+2016-03-01 12:19:36.042 DEBUG   ReportProvider            Scanning file: @GSC_ACT_ENU.RPL
+2016-03-01 12:19:36.042 DEBUG   ReportProvider            Scanning file: @GSC_PFC_ENU.RPL
+2016-03-01 12:19:36.042 DEBUG   ReportProvider            Scanning file: @GSC_RACT(landscape)_ENU.RPL
+2016-03-01 12:19:36.042 DEBUG   ReportProvider            Scanning file: @GSC_RACT_ENU.RPL
+2016-03-01 12:19:36.057 DEBUG   ReportProvider            Scanning file: @GSC_RPFC(landscape)_ENU.RPL
+2016-03-01 12:19:36.057 DEBUG   ReportProvider            Scanning file: @GSC_RPFC_ENU.RPL
+2016-03-01 12:19:36.057 DEBUG   ReportProvider            Scanning file: @GSC_RSFC(landscape)_ENU.RPL
+2016-03-01 12:19:36.057 DEBUG   ReportProvider            Scanning file: @GSC_RSFC_ENU.RPL
+2016-03-01 12:19:36.073 DEBUG   ReportProvider            Scanning file: @GSC_SFC_ENU.RPL
+2016-03-01 12:19:36.073 DEBUG   ReportProvider            Scanning file: @Horn(landscape)_ENU.RPL
+2016-03-01 12:19:36.073 DEBUG   ReportProvider            Scanning file: @INC-PDL object actions_ENU.rpl
+2016-03-01 12:19:36.073 DEBUG   ReportProvider            Scanning file: @INC-PDL object attributes_ENU.rpl
+2016-03-01 12:19:36.073 DEBUG   ReportProvider            Scanning file: @INC-PDL object direct interconnections_ENU.rpl
+2016-03-01 12:19:36.088 DEBUG   ReportProvider            Scanning file: @INC-PDL object statistics_ENU.rpl
+2016-03-01 12:19:36.088 DEBUG   ReportProvider            Scanning file: @INC-PDL picture actions_ENU.rpl
+2016-03-01 12:19:36.088 DEBUG   ReportProvider            Scanning file: @INC-PDL picture attributes_ENU.rpl
+2016-03-01 12:19:36.088 DEBUG   ReportProvider            Scanning file: @INC-PDL picture direct interconnections_ENU.rpl
+2016-03-01 12:19:36.104 DEBUG   ReportProvider            Scanning file: @INC-PDL picture drawing_ENU.rpl
+2016-03-01 12:19:36.104 DEBUG   ReportProvider            Scanning file: @INC-PDL picture embedded objects_ENU.rpl
+2016-03-01 12:19:36.104 DEBUG   ReportProvider            Scanning file: @INC-PDL picture single action_ENU.rpl
+2016-03-01 12:19:36.104 DEBUG   ReportProvider            Scanning file: @INC-PDL picture statistics_ENU.rpl
+2016-03-01 12:19:36.104 DEBUG   ReportProvider            Scanning file: @INC-PDLOBJ object actions_ENU.rpl
+2016-03-01 12:19:36.120 DEBUG   ReportProvider            Scanning file: @INC-PDLOBJ object attributes_ENU.rpl
+2016-03-01 12:19:36.120 DEBUG   ReportProvider            Scanning file: @INC-PDLOBJ object direct interconnections_ENU.rpl
+2016-03-01 12:19:36.120 DEBUG   ReportProvider            Scanning file: @INC-PDLOBJ object single action_ENU.rpl
+2016-03-01 12:19:36.120 DEBUG   ReportProvider            Scanning file: @INC-PDLOBJ object statistics_ENU.rpl
+2016-03-01 12:19:36.120 DEBUG   ReportProvider            Scanning file: @lbmcs_ENU.RPL
+2016-03-01 12:19:36.135 DEBUG   ReportProvider            Scanning file: @LTOBausteinliste(landscape)_ENU.RPL
+2016-03-01 12:19:36.135 DEBUG   ReportProvider            Scanning file: @mcpcs(landscape)_ENU.rpl
+2016-03-01 12:19:36.135 DEBUG   ReportProvider            Scanning file: @mcpcs_ENU.rpl
+2016-03-01 12:19:36.135 DEBUG   ReportProvider            Scanning file: @Online Table Control - Picture_ENU.RPL
+2016-03-01 12:19:36.151 DEBUG   ReportProvider            Scanning file: @Online Table Control - Table_ENU.RPL
+2016-03-01 12:19:36.151 DEBUG   ReportProvider            Scanning file: @Online Trend Control - Picture_ENU.RPL
+2016-03-01 12:19:36.151 DEBUG   ReportProvider            Scanning file: @PDL object actions(landscape)_ENU.rpl
+2016-03-01 12:19:36.151 DEBUG   ReportProvider            Scanning file: @PDL object actions_ENU.rpl
+2016-03-01 12:19:36.151 DEBUG   ReportProvider            Scanning file: @PDL object attributes(landscape)_ENU.rpl
+2016-03-01 12:19:36.166 DEBUG   ReportProvider            Scanning file: @PDL object attributes_ENU.rpl
+2016-03-01 12:19:36.166 DEBUG   ReportProvider            Scanning file: @PDL object direct interconnections(landscape)_ENU.rpl
+2016-03-01 12:19:36.166 DEBUG   ReportProvider            Scanning file: @PDL object direct interconnections_ENU.rpl
+2016-03-01 12:19:36.166 DEBUG   ReportProvider            Scanning file: @PDL object statistics(landscape)_ENU.rpl
+2016-03-01 12:19:36.166 DEBUG   ReportProvider            Scanning file: @PDL object statistics_ENU.rpl
+2016-03-01 12:19:36.182 DEBUG   ReportProvider            Scanning file: @PDL picture (compact)_ENU.rpl
+2016-03-01 12:19:36.182 DEBUG   ReportProvider            Scanning file: @PDL picture actions(landscape)_ENU.rpl
+2016-03-01 12:19:36.182 DEBUG   ReportProvider            Scanning file: @PDL picture actions_ENU.rpl
+2016-03-01 12:19:36.182 DEBUG   ReportProvider            Scanning file: @PDL picture attributes(landscape)_ENU.rpl
+2016-03-01 12:19:36.198 DEBUG   ReportProvider            Scanning file: @PDL picture attributes_ENU.rpl
+2016-03-01 12:19:36.198 DEBUG   ReportProvider            Scanning file: @PDL picture direct interconnections(landscape)_ENU.rpl
+2016-03-01 12:19:36.198 DEBUG   ReportProvider            Scanning file: @PDL picture direct interconnections_ENU.rpl
+2016-03-01 12:19:36.198 DEBUG   ReportProvider            Scanning file: @PDL picture drawing(landscape)_ENU.rpl
+2016-03-01 12:19:36.213 DEBUG   ReportProvider            Scanning file: @PDL picture drawing_ENU.rpl
+2016-03-01 12:19:36.213 DEBUG   ReportProvider            Scanning file: @PDL picture embedded objects(landscape)_ENU.rpl
+2016-03-01 12:19:36.213 DEBUG   ReportProvider            Scanning file: @PDL picture embedded objects_ENU.rpl
+2016-03-01 12:19:36.213 DEBUG   ReportProvider            Scanning file: @PDL picture statistics(landscape)_ENU.rpl
+2016-03-01 12:19:36.213 DEBUG   ReportProvider            Scanning file: @PDL picture statistics_ENU.rpl
+2016-03-01 12:19:36.229 DEBUG   ReportProvider            Scanning file: @PDLOBJLTDyn_ENU.RPL
+2016-03-01 12:19:36.229 DEBUG   ReportProvider            Scanning file: @PDLOBJLT_ENU.RPL
+2016-03-01 12:19:36.229 DEBUG   ReportProvider            Scanning file: @PDLPic(landscape)_ENU.rpl
+2016-03-01 12:19:36.229 DEBUG   ReportProvider            Scanning file: @PDLPicDyn_ENU.rpl
+2016-03-01 12:19:36.229 DEBUG   ReportProvider            Scanning file: @PDLPICLTDyn_ENU.RPL
+2016-03-01 12:19:36.244 DEBUG   ReportProvider            Scanning file: @PDLPICLTOvr_ENU.RPL
+2016-03-01 12:19:36.244 DEBUG   ReportProvider            Scanning file: @PDLPICLT_ENU.RPL
+2016-03-01 12:19:36.244 DEBUG   ReportProvider            Scanning file: @PDLPicOvr_ENU.rpl
+2016-03-01 12:19:36.244 DEBUG   ReportProvider            Scanning file: @PDLPic_ENU.rpl
+2016-03-01 12:19:36.260 DEBUG   ReportProvider            Scanning file: @Projecteditor_ENU.RPL
+2016-03-01 12:19:36.260 DEBUG   ReportProvider            Scanning file: @ptmcs (landscape)_ENU.rpl
+2016-03-01 12:19:36.260 DEBUG   ReportProvider            Scanning file: @ptmcs_ENU.RPL
+2016-03-01 12:19:36.260 DEBUG   ReportProvider            Scanning file: @Ruler Control - Picture_ENU.RPL
+2016-03-01 12:19:36.276 DEBUG   ReportProvider            Scanning file: @Ruler Control - Table_ENU.RPL
+2016-03-01 12:19:36.276 DEBUG   ReportProvider            Scanning file: @Runtime Message List_ENU.RPL
+2016-03-01 12:19:36.276 DEBUG   ReportProvider            Scanning file: @SCollect_ENU.RPL
+2016-03-01 12:19:36.276 DEBUG   ReportProvider            Scanning file: @Textlibrary(landscape)_ENU.RPL
+2016-03-01 12:19:36.276 DEBUG   ReportProvider            Scanning file: @Textlibrary_ENU.RPL
+2016-03-01 12:19:36.291 DEBUG   ReportProvider            Scanning file: @TimeSync(landscape)_ENU.RPL
+2016-03-01 12:19:36.291 DEBUG   ReportProvider            Scanning file: @tlgcs(landscape)_ENU.rpl
+2016-03-01 12:19:36.291 DEBUG   ReportProvider            Scanning file: @tlgcs_ENU.rpl
+2016-03-01 12:19:36.291 DEBUG   ReportProvider            Scanning file: @UACS_ENU.RPL
+2016-03-01 12:19:36.307 DEBUG   ReportProvider            Scanning file: @User Archive Control - Picture_ENU.RPL
+2016-03-01 12:19:36.307 DEBUG   ReportProvider            Scanning file: @User Archive Control - Table_ENU.RPL
+2016-03-01 12:19:36.307 DEBUG   ReportProvider            Scanning file: @XREFPrintRef_ENU.RPL
+2016-03-01 12:19:36.307 DEBUG   ReportProvider            Scanning file: @XREFPRINTSRC_ENU.RPL
+2016-03-01 12:19:36.307 DEBUG   ReportProvider            Scanning file: @XREFPrintRef_ESP.RPL
+2016-03-01 12:19:36.322 DEBUG   ReportProvider            Scanning file: @XREFPRINTSRC_ESP.RPL
+2016-03-01 12:19:36.322 DEBUG   ReportProvider            Scanning file: @XREFPrintRef_FRA.RPL
+2016-03-01 12:19:36.322 DEBUG   ReportProvider            Scanning file: @XREFPRINTSRC_FRA.RPL
+2016-03-01 12:19:36.322 DEBUG   ReportProvider            Scanning file: @XREFPrintRef_ITA.RPL
+2016-03-01 12:19:36.338 DEBUG   ReportProvider            Scanning file: @XREFPRINTSRC_ITA.RPL
+2016-03-01 12:19:36.494 DEBUG   DataLoader                ResolveSourceObjects(). InCount = 515. OutCount = 0. ExecTime = 147,87 ms
+2016-03-01 12:19:36.541 DEBUG   DataLoader                InsertFileElements(). Count = 515. ExecTime = 36,88 ms
+2016-03-01 12:19:36.634 DEBUG   DataLoader                InsertSourceObjects(). Count = 515. ExecTime = 90,49 ms
+2016-03-01 12:19:36.712 DEBUG   DataLoader                ResolveSourceObjects(). InCount = 129. OutCount = 88. ExecTime = 60,90 ms
+2016-03-01 12:19:36.728 DEBUG   DataLoader                UpdateSourceObjects(). Count = 88. ExecTime = 24,15 ms
+2016-03-01 12:19:36.759 DEBUG   DataLoader                InsertReferences(). Count = 129. ExecTime = 17,16 ms

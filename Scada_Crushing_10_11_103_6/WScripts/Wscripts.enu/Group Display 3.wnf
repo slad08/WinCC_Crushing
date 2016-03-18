@@ -1,0 +1,183 @@
+#include "dynamic.h"
+#include "language.h"
+
+#pragma code("pdlcsapi.dll")
+#include "pdlcsapi.h"
+#pragma code()
+
+#pragma code("dmclient.dll")
+#include "dmclient.h"
+#pragma code()
+#pragma option(mbcs)
+
+DECLARE_WIZARD_FOR_OCX
+
+BEGIN_PROPERTY_SCHEME
+{ "CollectValue", VT_UI4 },
+{ "Relevant", VT_BOOL },
+{ "SignificantMask", VT_UI4 },
+END_PROPERTY_SCHEME
+
+BEGIN_DYNAMICS
+	{
+	    SD_TABNAME,
+		GD2_Name1,
+		NULL,
+		"BPC.bmp",
+		GD2_Name2
+		GD2_Name3,
+		{ "OnOption1", NULL, },
+		"OnGenerate",
+		"OnShowGenerateInfo",
+		{ 
+			{ NULL,NULL },
+		},
+
+	},
+END_DYNAMICS
+
+char info_text1[] =
+		TEXT_GD_18
+		;
+char info_text2a[] = TEXT_GD_19;
+char info_text2b[] = TEXT_GD_20;
+char info_text2c[] = TEXT_GD_21;
+		
+char error_text[] =
+		TEXT_GD_22
+		;
+char gen_text[]   =
+		TEXT_GD_23
+	    "    %s\r\n"					//Zeile100
+		TEXT_GD_24
+	    "%s.EventState\r\n"
+		;
+char gen_error_text1[] =
+		TEXT_CP_13
+		TEXT_GD_27
+		TEXT_GD_28
+		TEXT_GD_29
+		;
+char gen_error_text2[] =
+		TEXT_CP_13
+		TEXT_PC_31
+		TEXT_PC_32
+		TEXT_PC_33
+		TEXT_PC_34
+		;
+
+char		szBuffer[255];
+BOOL		bResult		= FALSE;
+DWORD		dwTypes[1]	= {DM_VARTYPE_STRUCT};
+CMN_ERROR	Error;
+char 		szFaceplateType[255]		= "";
+char 		szFaceplateTypeInstance[255]	= "";
+
+
+void OnOption1(void)
+{
+HWND		hWnd;
+RECT		rect;
+char*		p;
+char		szServerName[255];
+char*		lpszServerName	= NULL;
+DWORD		i;
+DM_VARFILTER	dmFilter   = {DM_VARFILTER_TYPE, 1, NULL, NULL, NULL, NULL };
+	
+
+  ConnectToWinCC();
+
+  // enum all structure type from the WinCC-DM
+  //bResult = GAPIEnumTypes(GetProjectName(),DMEnumTypesProc,NULL,&Error);
+
+  dmFilter.pdwTypes = &dwTypes[0];
+    
+  CreateStatic(0,30, info_text1 );
+    
+  hWnd=CreateVarBrowserEx(0,0, &dmFilter, szFaceplateTypeInstance);
+
+  CreateStatic(0, 80, info_text2a );
+  CreateStatic(0, 95, info_text2b );
+  CreateStatic(0,110, info_text2c );
+   
+  GetWindowRect(GetParent(hWnd), &rect);
+
+  MoveWindow(hWnd, 0, 50, (rect.right - rect.left), 120, TRUE);  //Zeile170
+
+}
+
+
+void OnShowGenerateInfo(HWND hEdit)
+{
+char text[400];
+DM_VARKEY dmVarKey = {DM_VARKEY_NAME,0,"",NULL};
+
+  if(szFaceplateTypeInstance[0]!= '\0')
+  {
+  sprintf(dmVarKey.szName,"%s.EventState",szFaceplateTypeInstance);
+/*
+  if (DMGetVarInfo(GetProjectName(), &dmVarKey, 1, &Error) != FALSE )
+    {
+*/
+ 	if (strlen(szFaceplateTypeInstance)<26)
+	{
+	sprintf(text,gen_text,GetObjectName(),szFaceplateTypeInstance);
+
+	}
+	else
+	{
+	char szFaceplateTypeInstance2[40] = "...";
+	int k;
+	int m;
+	m = strlen(szFaceplateTypeInstance);
+	for(k=0;k<26;k++)
+	{
+	szFaceplateTypeInstance2[k+3] = szFaceplateTypeInstance[m-26+k];
+	};
+	sprintf(text,gen_text,GetObjectName(),szFaceplateTypeInstance2);
+	}
+
+/*
+    }
+  else
+    {
+    sprintf(text,"%s",gen_error_text2);
+    }
+*/
+  }
+  else
+  {
+  sprintf(text,"%s",gen_error_text1);
+  }
+
+  SetWindowText(hEdit, text);
+}
+
+
+void OnGenerate(void)
+{
+LINK_INFO lpLink;
+DM_VARKEY dmVarKey = {DM_VARKEY_NAME,0,"",NULL};
+
+ if( szFaceplateTypeInstance[0]!= '\0' )
+   {
+   sprintf(dmVarKey.szName,"%s.EventState",szFaceplateTypeInstance);
+   _mbscpy((unsigned char *)lpLink.szLinkName,(unsigned char *)dmVarKey.szName);
+
+   // Gibt es eine Membervariable .EventState ? */
+/*
+   if (DMGetVarInfo(GetProjectName(), &dmVarKey, 1, &Error) != FALSE )
+     {
+*/
+     lpLink.enumLinkType=1;
+
+     PDLCSSetLink(	GetProjectName(),
+			GetPictureName(),
+			GetObjectName(),
+			"CollectValue",
+			&lpLink,NULL);
+/*
+     }
+*/
+   }
+}

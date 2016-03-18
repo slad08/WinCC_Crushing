@@ -1,0 +1,313 @@
+#include "dynamic.h"
+#include "language.h"
+
+#pragma code("pdlcsapi.dll")
+#include "pdlcsapi.h"
+#pragma code()
+
+#pragma code("dmclient.dll")
+#include "dmclient.h"
+#pragma code()
+
+#pragma code( "kernel32.dll" )
+HLOCAL LocalFree( HLOCAL hMem );
+#pragma code()
+
+
+WIZARD_FLAGS(WIZARD_FLAG_OCX | WIZARD_FLAG_ALL_PROJECT_TYPES)
+
+BEGIN_PROPERTY_SCHEME
+{ "tagname", VT_BSTR },
+END_PROPERTY_SCHEME
+
+
+BEGIN_DYNAMICS
+{
+        SD_TABNAME,
+        CP_Name1,
+        NULL,
+        "BPC.bmp",
+        CP_Name2,
+        { "OnOption1", NULL, },
+        "OnGenerate",
+        "OnShowGenerateInfo",
+        { 
+            { NULL,NULL },
+        },
+    },
+END_DYNAMICS
+
+
+char info_text1[] = "Select the tag structure:";
+char info_text2a[] = TEXT_CP_03;
+char info_text2b[] = TEXT_CP_04;
+char info_text2c[] = TEXT_CP_05;
+char info_text2d[] = TEXT_CP_06;
+
+char error_text[] = TEXT_CP_07
+                    TEXT_CP_08;
+char gen_text[]   = TEXT_CP_09
+                    "    %s\r\n"
+                    TEXT_CP_10
+                    "    %s\r\n";
+char gen_text_warning[] = TEXT_CP_11
+                          "    %s\r\n"
+                          TEXT_CP_12
+                          "    %s\r\n\r\n"
+                          TEXT_CP_13
+                          TEXT_CP_14
+                          TEXT_CP_15
+                          TEXT_CP_16;
+char gen_error_text[] = TEXT_CP_13
+                        TEXT_CP_17
+                        TEXT_CP_18
+                        TEXT_CP_19;
+
+DM_VARKEY    dmVarKey = { DM_VARKEY_NAME, 0, "", NULL };
+CMN_ERROR    Error;
+char         szFaceplateTypeInstance[255];
+char         g_Vari[100] = "";
+DWORD        dwTypes[1] = 0;
+DM_VARFILTER dmFilter = { DM_VARFILTER_TYPENAME, 0, NULL, NULL, NULL, NULL };
+BOOL         bResult = FALSE;
+char         szFaceplateType[255];
+char         szFaceplateTypeInstance[255];
+int          anzahl;
+char         szTypeName[255];
+
+char *GetMemberOfVariable( char *var )
+{
+    int i;
+    char *p;
+    for ( i=strlen(var)-1; i>0; i-- )
+    {
+        if ( var[i] == '.' )
+            return( var+i );
+    }
+    return( var );
+}
+
+BOOL EnumFct(char *property, VARTYPE vt, LPVOID pItem)
+{
+    LINK_INFO lpLink;
+    char nam_buffer[_MAX_PATH];
+    char preinstance[_MAX_PATH];
+
+    _mbscpy((unsigned char *)lpLink.szLinkName,(unsigned char *)"");
+      PDLCSGetLink(GetProjectName(),GetPictureName(),GetObjectName(),property,&lpLink,NULL);
+    if (BUBRT_LT_VARIABLE_DIRECT == lpLink.enumLinkType)
+    {
+        if (!(_mbsrchr((unsigned char *)lpLink.szLinkName,'.')) == NULL )
+        {
+            _mbscpy((unsigned char *)preinstance,(unsigned char *)GetMemberOfVariable(lpLink.szLinkName));
+            _mbscpy((unsigned char *)nam_buffer,(unsigned char *) preinstance);
+            _mbscpy((unsigned char *)lpLink.szLinkName, (unsigned char *)g_Vari);
+            _mbscat((unsigned char *)lpLink.szLinkName, (unsigned char *)nam_buffer);
+            PDLCSSetLink(GetProjectName(),GetPictureName(),GetObjectName(),property,&lpLink,NULL);
+        }
+    }
+    return TRUE;
+}
+
+
+void OnOption1(void)
+{
+    HWND  hWnd;
+    RECT  rect;
+    char* p;
+    char* lpszTypeName = NULL;
+    DWORD i;
+
+    szFaceplateType[0] = szFaceplateTypeInstance[0] = '\0';
+    dwTypes[0] = 0;
+    anzahl = 0;
+    szTypeName[0] = '\0';
+
+    ConnectToWinCC();
+
+      // Property "StructureType" auslesen
+    bResult = PDLCSGetPropertyEx(GetProjectName(),
+                                 GetPictureName(), 
+                                 GetObjectName(),
+                                 "StructureType",
+                                 VT_LPSTR,
+                                 &lpszTypeName,
+                                 0,
+                                 NULL,
+                                 NULL);
+
+    if ( bResult != FALSE && lpszTypeName != NULL )
+    {
+        _mbsncpy((unsigned char *)szFaceplateType,(unsigned char *)lpszTypeName,100);
+        szFaceplateType[100] = '\0';
+
+        // Speicher freigeben, der von PDLRTGetPropEx angelegt wurde...
+        LocalFree(  (HLOCAL)lpszTypeName );  lpszTypeName = NULL;
+
+        _mbscpy((unsigned char *)szTypeName,(unsigned char *)szFaceplateType);
+         // PCS7 AS specific structure types:
+        _mbscat((unsigned char*)szTypeName, (unsigned char*)":*/");
+        _mbscat((unsigned char*)szTypeName, (unsigned char*)szFaceplateType);
+
+        dmFilter.lpszConn = &szTypeName[0];
+    }
+    else
+    {
+        // Property "Servername" auslesen, um Typname daraus zu gewinnen
+        bResult = PDLCSGetPropertyEx( GetProjectName(),
+                              GetPictureName(), 
+                              GetObjectName(),
+                              "Servername",
+                              VT_LPSTR,
+                              &lpszTypeName,
+                              0,
+                              NULL,
+                              NULL);
+
+        if ( bResult != FALSE && lpszTypeName != NULL )
+        {
+            if (5 < _mbslen((unsigned char *)lpszTypeName))
+            {
+                // Typname aus Servername extrahieren ("PCS7 ...... Control")
+                _mbsncpy((unsigned char *)szFaceplateType,(unsigned char *)&lpszTypeName[5],100);
+                for ( i=(strlen(szFaceplateType)-1); i>4, (unsigned char *)szFaceplateType[i]!=' '; i-- )
+                ;
+                szFaceplateType[i] = '\0';
+
+                p =(char *) _mbsstr((unsigned char *)szFaceplateType, (unsigned char *)"SIPART"); // Ausnahme SIPART 19/21
+
+                if (p != NULL)
+                {
+                    _mbscpy((unsigned char *)szFaceplateType,(unsigned char *) "SIPART");
+                }
+
+                _mbscpy((unsigned char *)szTypeName,(unsigned char *)szFaceplateType);
+                // PCS7 AS specific structure types:
+                _mbscat((unsigned char*)szTypeName, (unsigned char*)":*/");
+                _mbscat((unsigned char*)szTypeName, (unsigned char*)szFaceplateType);
+
+                dmFilter.lpszConn = &szTypeName[0];
+            }
+            else
+            {
+                dwTypes[0] = DM_VARTYPE_STRUCT; /*14*/
+                dmFilter.dwFlags = DM_VARFILTER_TYPE;
+                dmFilter.dwNumTypes = 1;
+                dmFilter.pdwTypes = &dwTypes[0];
+            }
+            // Speicher freigeben, der von PDLRTGetPropEx angelegt wurde...
+            LocalFree(  (HLOCAL)lpszTypeName );  lpszTypeName = NULL;
+        }
+        else
+        {
+            dwTypes[0] = DM_VARTYPE_STRUCT; /*14*/
+            dmFilter.dwFlags = DM_VARFILTER_TYPE;
+            dmFilter.dwNumTypes = 1;
+            dmFilter.pdwTypes = &dwTypes[0];
+        }
+    }
+
+    sprintf(g_Vari,"");
+    hWnd=CreateVarBrowserEx(0,0, &dmFilter, g_Vari);
+    CreateStatic(0, 80, info_text2a );
+    CreateStatic(0, 95, info_text2b );
+    CreateStatic(0,110, info_text2c );
+    CreateStatic(0,125, info_text2d );
+
+    GetWindowRect(GetParent(hWnd), &rect);
+    MoveWindow(hWnd, 0, 50, (rect.right - rect.left), 120, TRUE);
+}
+
+void OnShowGenerateInfo(HWND hEdit)
+{
+    char text[400];
+
+    if(g_Vari[0]!= '\0')
+    {
+        sprintf(dmVarKey.szName,"%s",g_Vari);
+        if (DMGetVarInfo(GetProjectName(), &dmVarKey, 1, &Error) != FALSE )
+        {
+            sprintf(text,gen_text,GetObjectName(),g_Vari);
+        }
+        else
+        {
+            sprintf(text,gen_text_warning,GetObjectName(),g_Vari);
+        }
+    }
+    else
+    {
+        sprintf(text,"%s",gen_error_text);
+    }
+  
+    SetWindowText(hEdit, text);
+}
+
+
+
+void OnGenerate(void)
+{
+    char szTag[260];
+    char szTagname[260];
+    char szOldTagname[260];
+    char* pszObject = NULL;
+    char szOldLinkName[260];
+    char szNewLinkName[260];
+    SEARCH_ITEM_STRUCT Searchitem[2];
+    CMN_ERROR pError;
+
+    int i;
+
+    for ( i=0; i<=strlen(g_Vari); i++ )
+    {
+        if ( g_Vari[i] == '.' )
+        {
+            g_Vari[i] = '\0';
+            break;
+        }
+    }
+    EnumProperty("EnumFct", NULL, 3);
+
+    // Get the tagname - Property only for compare
+    PDLCSGetPropertyEx(GetProjectName(),GetPictureName(),GetObjectName(), "tagname", VT_LPSTR, &pszObject, 0, NULL, NULL);
+    if (pszObject)
+    {
+        _mbsncpy((unsigned char *)szOldTagname, (unsigned char *)pszObject, 260);
+        LocalFree( (HLOCAL)pszObject );
+        pszObject= NULL;
+    }
+
+    // Get the tag - Property only for compare
+    PDLCSGetPropertyEx(GetProjectName(),GetPictureName(),GetObjectName(), "tag", VT_LPSTR, &pszObject, 0, NULL, NULL);
+    if (pszObject)
+    {
+        _mbsncpy((unsigned char *)szTag,(unsigned char *) pszObject, 260);
+        LocalFree( (HLOCAL)pszObject );
+        pszObject= NULL;
+    }
+
+    _mbsncpy((unsigned char *)szTagname, (unsigned char *)g_Vari, 260);
+    pszObject = szTagname;
+    PDLCSSetPropertyEx(GetProjectName(),GetPictureName(),GetObjectName(), "tagname", VT_LPSTR, &pszObject, 0, NULL, NULL);
+    PDLCSSetPropertyEx(GetProjectName(),GetPictureName(),GetObjectName(), "tag", VT_LPSTR, &pszObject, 0, NULL, NULL);
+
+    // Change String
+    Searchitem[0].lpszSearchStr = szOldTagname; // String to search in variable or picture names
+    Searchitem[0].lpszReplaceStr = szTagname;   // String to replace with
+    Searchitem[0].dwFlags = CS_COMPLETE_STRING; // Flags (see m_PdlCS.PDLCS_CS_FLAGS)
+
+    _mbsncpy((unsigned char *)szOldLinkName,(unsigned char *)szOldTagname,sizeof(szOldLinkName));
+    _mbsncpy((unsigned char *)szNewLinkName,(unsigned char *)szTagname,sizeof(szNewLinkName));
+
+    _mbsncat((unsigned char *)szOldLinkName,(unsigned char *) ".",sizeof(szOldLinkName));
+    _mbsncat((unsigned char *)szNewLinkName,(unsigned char *) ".",sizeof(szNewLinkName));
+
+    Searchitem[1].lpszSearchStr = szOldLinkName;  // String to search in variable or picture names
+    Searchitem[1].lpszReplaceStr = szNewLinkName; // String to replace with
+    Searchitem[1].dwFlags = CS_PART_STRING;       // Flags (see m_PdlCS.PDLCS_CS_FLAGS)
+
+ 
+    Searchitem[0].Type = REPLACE_TAG;
+    Searchitem[1].Type = REPLACE_TAG;
+
+    PDLCSChangeStrings(GetProjectName(),GetPictureName(),GetObjectName(),2,&Searchitem[0],NULL,TRUE,&pError);
+}

@@ -1,0 +1,134 @@
+#include "dynamic.h"
+#include "language.h"
+
+#include "dmdefs.h"
+#include "db.h"
+
+#pragma code("MasterGraphics.dll")
+	#include "MasterGraphics.h"
+#pragma code()
+#pragma option(mbcs)
+
+#pragma code("pdlcsapi.dll")
+#include "pdlcsapi.h"
+#pragma code()
+
+#ifndef LB_ADDSTRING
+#define LB_ADDSTRING    0x0180
+#endif
+
+#ifndef LB_SETCURSEL
+#define LB_SETCURSEL    0x0186
+#endif
+
+#include  	"dmclient.h"
+
+
+
+char *pszGenerateInfo = TEXT_SFC_32
+		 TEXT_SFC_33
+		 "%s \r\n";
+
+char		szImportFile[255]="";
+char		szTemplatepicture[255]="";
+CMN_ERROR 	CMNError;
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+BEGIN_PROPERTY_SCHEME
+END_PROPERTY_SCHEME
+
+DECLARE_WIZARD_FOR_OCX
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+BEGIN_DYNAMICS
+	{
+		PF_TABNAME,
+		GI_Name,
+		NULL,
+		"Pcs7.bmp",
+		GI_Name1
+		GE_Name2,
+		{"OnOption1",NULL, },
+		"OnGenerate",
+		"OnShowGenerateInfo",
+		{ 
+			{ NULL, NULL } 
+		},
+
+	},
+END_DYNAMICS
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+void OnShowGenerateInfo(HWND hEdit)
+{
+	char text[400];
+	if (strlen(szImportFile)<32)
+	{
+	sprintf(text,pszGenerateInfo, szImportFile);
+	}
+	else
+	{
+		char szImportFile2[40] = "...";
+		int k;
+		int m;
+		m = strlen(szImportFile);
+		for(k=0;k<36;k++)
+		{
+			szImportFile2[k+3] = szImportFile[m-36+k];
+		};
+		sprintf(text,pszGenerateInfo, szImportFile2);
+	}
+ 	SetWindowText(hEdit, text);
+}
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+void OnOption1(void)
+{
+HWND 			hWnd = NULL;
+char* 		p = NULL;
+static BOOL 	bFirst = TRUE;
+
+if(bFirst)
+	{
+		sprintf(szImportFile,GetProjectName());
+		p =(char *)	_mbsrchr((unsigned char *)szImportFile, '\\');
+		if( p == NULL )
+		{sprintf(szImportFile,"C:\\Export.csv");}
+		else
+		{sprintf(p+1,"Export.csv");}
+		sprintf(szTemplatepicture,GetProjectName());
+		p =(char *)	_mbsrchr((unsigned char *)szTemplatepicture, '\\');
+		if( p == NULL )
+		{sprintf(szTemplatepicture,"C:\\@TEMPLATEAPLV8.pdl");}
+		else
+		{sprintf(p+1,"GraCS\\@TEMPLATEAPLV8.pdl");}
+		bFirst = FALSE;
+	}
+	CreateStatic(0,50,TXTO1T5);
+   	hWnd=CreateFileBrowser(0,70,2,GI_TEXTO1T6,szImportFile);
+	CreateStatic(0,105,GC_TXTO2T7);
+	CreateStatic(0,120,GC_TXTO2T7a);
+   	hWnd=CreateFileBrowser(0,140,2,GI_TEXTO1T8,szTemplatepicture);
+}
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+int OnGenerate(void)
+{
+BOOL				fRet = FALSE;
+char 				szErrorText[512];
+HWND				hWnd = NULL;
+
+	fRet = MGImportObjects( GetProjectName(), GetPictureName(), szImportFile, szTemplatepicture, &CMNError);
+
+	GetParent(hWnd);
+
+	if (CMNError.dwError1 != 0)
+	{
+		if (CMNError.dwError1 == MGErrTermOK)
+			MessageBox(hWnd, CMNError.szErrorText, TXTShowFinisch, MB_OK | MB_ICONINFORMATION);
+		else
+			MessageBox(hWnd, CMNError.szErrorText, TXTShowErrorI, MB_OK | MB_ICONERROR);
+	}
+	PDLCSShowApp();
+	return 0;
+}

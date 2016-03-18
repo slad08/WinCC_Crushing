@@ -1,0 +1,171 @@
+#include "dynamic.h"
+#include "language.h"
+
+#pragma code("pdlcsapi.dll")
+#include "pdlcsapi.h"
+#pragma code()
+#pragma option(mbcs)
+
+#ifndef LB_ADDSTRING
+#define LB_ADDSTRING    0x0180
+#endif
+
+#ifndef LB_SETCURSEL
+#define LB_SETCURSEL    0x0186
+#endif
+
+
+
+BEGIN_PROPERTY_SCHEME
+END_PROPERTY_SCHEME
+
+
+BEGIN_DYNAMICS
+	{
+		PF_TABNAME,
+		OP_Name,
+		NULL,
+		"BPC.bmp",
+		OP_Name1,
+		{ "OnOption1", NULL, },
+		"OnGenerate",
+		"OnShowGenerateInfo",
+		{ 
+			JCR_TRIGGERS,
+			{ NULL,NULL },
+		},
+
+	},
+END_DYNAMICS
+DECLARE_JCR_TRIGGERS
+
+char g_Bild[255];
+BOOL bAdaptSize, bNoAdaptSize;
+
+void OnOption1(void)
+{
+HWND hWnd;
+RECT rect;
+char* p;
+
+	memset(g_Bild,0,255);
+
+	sprintf(g_Bild,GetProjectName());
+
+	p = (char *)	_mbsrchr((unsigned char *)g_Bild, '\\');
+	if( p == NULL )
+	{
+		sprintf(g_Bild,"*.pdl");		
+	}
+	else
+	{
+	 	sprintf(p+1,"GraCs\\*.pdl");
+	}
+
+	// MessageBox(NULL, g_Bild,"Test",MB_OK);
+
+	CreateStatic(0,30,TEXT_OPPW_03);
+	hWnd=CreatePackageBrowser(0,50,PB_PICTURE,g_Bild);
+	GetWindowRect(GetParent(hWnd), &rect);
+	MoveWindow(hWnd, 0, 50, (rect.right - rect.left), 20, TRUE);
+    bAdaptSize=TRUE;    CreateRadioButton(0,150,TEXT_OPPW_04, &bAdaptSize);
+    bNoAdaptSize=FALSE; CreateRadioButton(0,170,TEXT_OPPW_05, &bNoAdaptSize);
+}
+
+void OnShowGenerateInfo(HWND hEdit)
+{
+	char *test = TEXT_OPPW_06
+		     "    %s\r\n"
+				 TEXT_OPPW_07
+				 TEXT_OPPW_08
+				 "    %s\r\n"
+				 TEXT_OPPW_09
+	             "    %s\r\n"
+				 ;
+				 
+	char text[400];
+	sprintf(text,test,g_Bild,gsz_Trigger,GetObjectName());
+	SetWindowText(hEdit, text);
+}
+
+void OnGenerate(void)
+{
+PCMN_ERROR pError;
+AP_BLOB *blob;
+char ifcode[255];
+char code[500];
+char sError[500];
+char dummy[255];
+char* p;
+
+/*********** Start Insert XRef Section *******/
+char* szPictureName[1];
+char szSourceCode[1100];
+/*********** End Insert XRef Section *******/
+
+	
+	memset(dummy,0,255);
+if (_mbsrchr((unsigned char *)g_Bild, '*'))
+  {
+  _mbscpy((unsigned char *)dummy,(unsigned char *)"Newpdl00.Pdl");
+  }
+else
+  {
+	p =(char *)	_mbsrchr((unsigned char *)g_Bild, '\\');
+	if( p == NULL)
+		_mbscpy((unsigned char *)dummy,(unsigned char *)g_Bild);
+	else
+	{
+		_mbscpy((unsigned char *)dummy,(unsigned char *)p+1);
+	}
+  }
+    ifcode[0]=0;
+	
+	if (g_Trigger==KEYBOARDDOWN)
+	  sprintf(ifcode,"if (nChar==%d) ",g_KeyPressed[0]);
+
+	szPictureName[0] = dummy;
+
+/*********** Start Insert XRef Section *******/
+	InsertXrefSection(szSourceCode,NULL,0,szPictureName,1);
+/*********** End Insert XRef Section *******/
+
+	if (bAdaptSize != FALSE)
+		sprintf(code,"%sSSMOpenTopFieldFixedSize(SSMGetScreen(lpszPictureName),%s);",ifcode,dummy);
+        else
+		sprintf(code,"%sSSMOpenTopField(SSMGetScreen(lpszPictureName),%s);",ifcode,dummy);
+	
+	_mbscat((unsigned char *)szSourceCode,(unsigned char *)code);
+	
+	switch( g_Trigger )
+	{
+		case MOUSECLICK:
+			blob = GenerateBLOB("#include \"apdefap.h\"\r\n"
+                        		"void OnClick(char* lpszPictureName, char* lpszObjectName,"
+		        	        	"char* lpszPropertyName) {","}", szSourceCode);
+			break;
+
+		case MOUSELBUTTONDOWN:
+			blob = GenerateBLOB("#include \"apdefap.h\"\r\n"
+						"void OnLButtonDown(char* lpszPictureName, char* lpszObjectName,"
+						"char* lpszPropertyName, UINT nFlags, int x, int y) {","}", szSourceCode);
+			break;
+
+
+		case MOUSERBUTTONDOWN:
+			blob = GenerateBLOB("#include \"apdefap.h\"\r\n"
+						"void OnRButtonDown(char* lpszPictureName, char* lpszObjectName,"
+						"char* lpszPropertyName, UINT nFlags, int x, int y) {","}", szSourceCode);
+			break;
+		default:
+			break;
+	}
+
+
+
+	BEGIN_JCR_BLOBERRORS
+		SetAction(NULL, blob, g_Trigger);
+	END_JCR_BLOBERRORS
+	DeleteBLOB(blob);
+	  
+}

@@ -1,0 +1,130 @@
+#include "dynamic.h"
+#include "language.h"
+
+#pragma code("pdlcsapi.dll")
+#include "pdlcsapi.h"
+#pragma code()
+#pragma option(mbcs)
+
+#ifndef LB_ADDSTRING
+#define LB_ADDSTRING    0x0180
+#endif
+
+#ifndef LB_SETCURSEL
+#define LB_SETCURSEL    0x0186
+#endif
+
+
+#define XGAP     15
+#define YGAP     5
+
+
+DECLARE_WIZARD_FOR_OCX
+
+BEGIN_PROPERTY_SCHEME
+{ "CollectValue", VT_UI4 },
+{ "Relevant", VT_BOOL },
+{ "SignificantMask", VT_UI4 },
+END_PROPERTY_SCHEME
+
+
+BEGIN_DYNAMICS
+    {
+        SD_TABNAME,
+        GD_Name1,
+        NULL,
+        "BPC.bmp",
+        GD_Name2
+        GD_Name3,
+        { "OnOption1", NULL, },
+        "OnGenerate",
+        "OnShowGenerateInfo",
+        { 
+            { NULL,NULL },
+        },
+
+    },
+END_DYNAMICS
+
+DECLARE_JCR_TRIGGERS
+
+char g_Bild[255];
+char g_Var[255];
+
+void OnOption1(void)
+{
+HWND hWnd;
+RECT rect;
+char* p;
+
+    memset(g_Bild,0,255);
+
+    sprintf(g_Bild,GetProjectName());
+
+    p = (char *)_mbsrchr((unsigned char *)g_Bild, '\\');
+    if( p == NULL )
+    {
+        sprintf(g_Bild,"*.pdl");        
+    }
+    else
+    {
+        sprintf(p+1,"GraCs\\*.pdl");
+    }
+
+    // MessageBox(NULL, g_Bild,"Test",MB_OK);
+
+    CreateStatic(0,30,TEXT_GD_04);
+    hWnd=CreatePackageBrowserOnlyLocalData(0,50,PB_PICTURE,g_Bild);
+    GetWindowRect(GetParent(hWnd), &rect);
+    MoveWindow(hWnd, 0, 50, (rect.right - rect.left), 20, TRUE);
+}
+
+void OnShowGenerateInfo(HWND hEdit)
+{
+
+    char *test = TEXT_GD_05
+                 "    %s\r\n"
+                 TEXT_GD_06
+                 "    %s\r\n"
+                 TEXT_GD_07
+                 "    %s\r\n"
+                 ;
+                 
+    char text[400];
+    int n;
+    sprintf(g_Var,"@%s",g_Bild);
+    for ( n = strlen(g_Var); n > 0; n-- )
+        if ( g_Var[n] == '.' )
+        {
+            g_Var[n] = '\0'; break;
+        }
+    sprintf(text,test,GetObjectName(),g_Bild,g_Var);
+    SetWindowText(hEdit, text);
+}
+
+
+
+
+void OnGenerate(void)
+{
+LINK_INFO lpLink;
+PCMN_ERROR pError;
+DWORD BoxType=0;
+int n;
+
+ sprintf(lpLink.szLinkName,"@%s",g_Bild);
+ for ( n = strlen(lpLink.szLinkName); n > 0; n-- )
+    if ( lpLink.szLinkName[n] == '.' )
+        {
+            lpLink.szLinkName[n] = '\0'; break;
+        }
+
+ lpLink.enumLinkType=1;
+/* USE_JCR_ZYCL_TRIGGERS*/
+
+ PDLCSSetLink(GetProjectName(),GetPictureName(),GetObjectName(),"CollectValue",&lpLink,NULL);
+
+ PDLCSSetPropertyEx(GetProjectName(),GetPictureName(),
+                     GetObjectName(),"BoxType",VT_I4,&BoxType,0,NULL,pError);
+
+}
